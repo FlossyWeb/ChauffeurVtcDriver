@@ -213,7 +213,7 @@ $( '#directions_map' ).live( 'pagebeforeshow',function(event){
 	}
 	if (idcourse != '')
 	{
-		infos += '<br>N&deg; de course : <b>' + idcourse + '</b>';
+		infos += 'N&deg; de course : <b>' + idcourse + '</b>';
 	}
 	infos += '</p>';
 	$("#infos_map").append(infos);		
@@ -228,7 +228,7 @@ $( '#directions_map' ).live( 'pagebeforeshow',function(event){
 });
 $('#directions_map').live('pagecreate', function() {
 	var addrVtc;
-	var addrRdv = $('#to').val();
+	var addrRdv = $.sessionStorage.getItem('rdv');
 	var addrDestFinal = $('#finaldest').val();
 	$('#infos_drive').empty();
 	$.get('https://api-adresse.data.gouv.fr/reverse/', {lat: lat, lon: lng, type: ''}, function(data) {
