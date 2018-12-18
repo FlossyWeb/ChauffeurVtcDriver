@@ -238,13 +238,13 @@ $('#directions_map').live('pagecreate', function() {
 			addrVtc = data.features[0].properties.label;
 			$('#from').val(addrVtc);
 			if(addrRdv!='') {
-				let joinClientBtn = '<a href="https://www.google.com/maps/dir/?api=1&origin='+addrVtc+'&destination='+addrRdv+'&travelmode=driving" target="_blank" onClick="" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Rejoindre le client</a>';
+				let joinClientBtn = '<a href="'+encodeURI('https://www.google.com/maps/dir/?api=1&origin='+addrVtc+'&destination='+addrRdv+'&travelmode=driving')+'" target="_blank" onClick="" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Rejoindre le client</a>';
 				$('#infos_drive').append(joinClientBtn);
 			}
 		}
 	}, "json");
 	if(addrRdv!=''&& addrDestFinal!='') {
-		let driveClientBtn = '<a href="https://www.google.com/maps/dir/?api=1&origin='+addrRdv+'&destination='+addrDestFinal+'&travelmode=driving" target="_blank" onClick="" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Le mener &agrave; destination</a>';
+		let driveClientBtn = '<a href="'+encodeURI('https://www.google.com/maps/dir/?api=1&origin='+addrRdv+'&destination='+addrDestFinal+'&travelmode=driving')+'" target="_blank" onClick="" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Le mener &agrave; destination</a>';
 		$('#infos_drive').append(driveClientBtn);
 	}
 	/*
