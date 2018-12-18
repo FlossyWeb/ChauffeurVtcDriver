@@ -1175,7 +1175,7 @@ if ( app ) {
 		document.addEventListener("pause", onPause, false);
 		navigator.splashscreen.hide();
 		StatusBar.overlaysWebView(false);
-		StatusBar.backgroundColorByHexString("#E7B242");
+		StatusBar.backgroundColorByHexString("#922268");
 		// prevent device from sleeping
 		window.powermanagement.acquire();
 		//window.powermanagement.acquire();
@@ -1198,10 +1198,10 @@ if ( app ) {
 		}).fail(function (jqXHR, textStatus, errorThrown) {
 			//udptransmit.initialize(geoserver, 80);
 		});
-		udptransmit.initialize(geoserver, 80);
+		//udptransmit.initialize(geoserver, 80);
 		openPdf = cordova.plugins.disusered.open;
 		// For iOS => backgroundtask
-		//backgroundtask.start(bgFunctionToRun);
+		backgroundtask.start(bgFunctionToRun);
 		/*
 		// For Android And Apple Enterprise apps => Enable background mode
 		cordova.plugins.backgroundMode.enable();
@@ -1220,7 +1220,7 @@ if ( app ) {
 				title: "Vous devriez revenir sur ChauffeursVTC.com",
 				text: "Ne manquez pas de course !",
 				at: _30_min_from_now,
-				led: "E7B242"
+				led: "922268"
 			});
 		}
 		cordova.plugins.backgroundMode.ondeactivate = function() {
@@ -1265,9 +1265,9 @@ if ( app ) {
 			//  foo: 'bar' // you can also add your own properties
 			//},
 			startForeground: true,
-			notificationTitle: 'ChauffeursVTC.com',
+			notificationTitle: 'ChauffeursVTC',
 			notificationText: 'Suivi de votre position',
-			notificationIconColor: '#FEDD1E'
+			notificationIconColor: '#922268'
 		});
 		BackgroundGeolocation.on('location', function(location) {
 			// handle your locations here
