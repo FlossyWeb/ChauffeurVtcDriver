@@ -1567,10 +1567,15 @@ function contactShare()
 function playAudio(src) {
 	if (my_media == null) {
 		// Create Media object from src
-		var path = window.location.pathname;
-		path = path.substring(0, path.lastIndexOf('/') + 1);
-		var source = path + src;
-		my_media = new Media(source, playOnSuccess, playOnError);
+		//var path = window.location.pathname;
+		//path = path.substring(0, path.lastIndexOf('/') + 1) + src;
+		// Need to unescape if path have '%20' component
+		var path = decodeURI(cordova.file.applicationDirectory) + 'www/' + src;
+		// iOS need to remove file://
+		if (device.platform.toLowerCase() == 'ios') {
+			path = path.replace('file://', '');
+		}
+		my_media = new Media(path, playOnSuccess, playOnError);
 	}
 	// Play audio
 	my_media.play();
