@@ -338,7 +338,7 @@ $( '#history' ).live( 'pagebeforeshow',function(event){
 			setTimeout(function() {
 				if(getRandomInt(1, 3) == 3 && !AppRatePrompted && app) {
 					AppRatePrompted = true;
-					AppRate.promptForRating();
+					//AppRate.promptForRating();
 				}
 			}, 1000);
 		}
@@ -1346,6 +1346,7 @@ if ( app ) {
 		cordova.plugins.notification.local.clearAll(function() {
 			//alert("All notifications cleared");
 		}, this);
+		/*
 		//AppRate.locales.getLocale('fr');
 		AppRate.preferences = {
 			openStoreInApp: false,
@@ -1364,6 +1365,7 @@ if ( app ) {
 				rateButtonLabel: "Votez"
 			}
 		};
+		*/
 	}
 }
 function onResume() {
