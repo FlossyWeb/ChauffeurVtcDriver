@@ -942,7 +942,7 @@ function diaryCall(query_string)
 				$.sessionStorage.setItem('cmd', 1);
 				$.mobile.pageContainer.pagecontainer("change", "#directions_map", { transition: "slide"} );
 				var number = data.cell;
-				var message = "Le taxi "+taxi+" viendra vous chercher à l'heure prévue.";
+				var message = "Le VTC "+taxi+" viendra vous chercher à l'heure prévue.";
 				var intent = ""; //leave empty for sending sms using default intent
 				var success = function () {
 				};
@@ -1037,7 +1037,7 @@ function callIncident(irdv, ihail, iop, icell, istatus)
 		if (data.ok)
 		{
 			var number = icell;
-			var message = "Le taxi "+taxi+" ne pourra venir vous chercher à cause d'un incident.";
+			var message = "Le VTC "+taxi+" ne pourra venir vous chercher à cause d'un incident.";
 			//var intent = ""; //leave empty for sending sms using default intent
 			var options = {
 				replaceLineBreaks: false, // true to replace \n by a new line, false by default
