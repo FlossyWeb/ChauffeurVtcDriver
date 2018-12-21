@@ -64,11 +64,11 @@
 	<plugin name="cordova-plugin-background-task" source="npm" />
 	<plugin name="cordova-plugin-background-mode" source="npm" spec="0.7.2" />
 	<plugin name="nl.x-services.plugins.launchmyapp">
-	-->
 	<plugin name="cordova-plugin-customurlscheme" source="npm">
 		<param name="URL_SCHEME" value="chauffeursvtcdriver" />
 	</plugin>
 	<plugin name="cordova-plugin-x-socialsharing" source="npm" />
+	-->
     <!-- <plugin name="cordova-plugin-apprate" spec="https://github.com/pushandplay/cordova-plugin-apprate" source="git" />   -->
 
     <icon src="icon.png" />
