@@ -42,7 +42,7 @@
     </plugin>
 	<plugin name="cordova-plugin-statusbar" source="npm" />
 	<plugin name="cordova-plugin-whitelist" source="npm" spec="1.0.0" />
-	<plugin name="cordova-plugin-calendar" source="npm" />
+	<!-- <plugin name="cordova-plugin-calendar" source="npm" /> -->
 	<!-- <plugin name="phonegap-plugin-barcodescanner" source="npm" /> -->
 	<plugin name="cordova-plugin-powermanagement" source="npm" />
 	<plugin name="cordova-open" source="npm" spec="1.0.12" />
