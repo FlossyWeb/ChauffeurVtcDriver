@@ -78,7 +78,7 @@
 		<param name="URL_SCHEME" value="chauffeursvtcdriver" />
 	</plugin>
 	<plugin name="cordova-plugin-x-socialsharing" source="npm" />
-    <!-- <plugin name="cordova-plugin-apprate" spec="https://github.com/pushandplay/cordova-plugin-apprate" source="git" />   -->
+    <!-- <plugin name="cordova-plugin-apprate" spec="https://github.com/pushandplay/cordova-plugin-apprate" source="git" /> -->
 
     <icon src="icon.png" />
 	<splash src="splash.png" />
@@ -166,10 +166,6 @@
         <preference name="SplashMaintainAspectRatio" value="true"/>
         <preference name="SplashShowOnlyFirstTime" value="true"/>
 		<!--
-		<config-file platform="android" parent="/manifest" mode="delete">
-			<uses-permission android:name="android.permission.RECORD_AUDIO"/>
-			<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-		</config-file>
 		<edit-config file="AndroidManifest.xml" target="/manifest/uses-permission[@android:name='android.permission.RECORD_AUDIO']" mode="merge">
 			   <uses-permission android:name="android.permission.INTERNET" />
 		</edit-config>
