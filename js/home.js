@@ -24,6 +24,7 @@ var idcourse = $.localStorage.setItem('idcourse', '');
 var idcourseUrg = $.sessionStorage.setItem('idcourseUrg', '');
 var dispo = 1;
 var rdv = $.sessionStorage.setItem('rdv', '');
+var dest = $.sessionStorage.setItem('dest', '');
 var com = $.sessionStorage.setItem('com', '');
 var cell = $.sessionStorage.setItem('cell', '');
 var cmd = $.sessionStorage.setItem('cmd', 0);
@@ -196,11 +197,13 @@ $( '#directions_map' ).live( 'pagebeforeshow',function(event){
 	$("#infos_map").empty();
 	idcourse = $.sessionStorage.getItem('idcourse');
 	var rdv = $.sessionStorage.getItem('rdv');
+	var dest = $.sessionStorage.getItem('dest');
 	var com = $.sessionStorage.getItem('com');
 	var cell = $.sessionStorage.getItem('cell');
 	var cmd = $.sessionStorage.getItem('cmd');
 	//document.getElementById('to').value = rdv;
 	$('#to').val(rdv);
+	$('#finaldest').val(dest);
 
 	var infos = '<p>';
 	if (cell != '')
@@ -229,7 +232,7 @@ $( '#directions_map' ).live( 'pagebeforeshow',function(event){
 $('#directions_map').live('pagecreate', function() {
 	var addrVtc;
 	var addrRdv = $.sessionStorage.getItem('rdv');
-	var addrDestFinal = $('#finaldest').val();
+	var addrDestFinal = $.sessionStorage.getItem('dest');
 	$('#infos_drive').empty();
 	$.get('https://api-adresse.data.gouv.fr/reverse/', {lat: lat, lon: lng, type: ''}, function(data) {
 		//alert(data.features[0].properties.label+' - '+data.features[0].properties.postcode);
@@ -780,18 +783,20 @@ function addCalendar(date, rdv, com, idcourse, cell)
 	// create
 	window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate,success,error);
 }
-function histoMap(rdv, idcourse, com, cell)
+function histoMap(rdv, dest, idcourse, com, cell)
 {
 	$.sessionStorage.setItem('rdv', rdv);
+	$.sessionStorage.setItem('dest', dest);
 	$.sessionStorage.setItem('idcourse', idcourse);
 	$.sessionStorage.setItem('com', com);
 	$.sessionStorage.setItem('cell', cell);
 	$.sessionStorage.setItem('cmd', 0);
 	$.mobile.pageContainer.pagecontainer("change", "#directions_map", { transition: "slide"} );
 }
-function planMap(rdv, idcourse, com, cell)
+function planMap(rdv, dest, idcourse, com, cell)
 {
 	$.sessionStorage.setItem('rdv', rdv);
+	$.sessionStorage.setItem('dest', dest);
 	$.sessionStorage.setItem('idcourse', idcourse);
 	$.sessionStorage.setItem('com', com);
 	$.sessionStorage.setItem('cell', cell);
@@ -860,6 +865,7 @@ function directCall()
 			 case '#directions_map':
 				//navigator.notification.alert('in direction case');
 				$.sessionStorage.setItem('rdv', data.rdv);
+				$.sessionStorage.setItem('dest', data.dest);
 				$.sessionStorage.setItem('idcourse', data.idcourse);
 				$.sessionStorage.setItem('com', data.com);
 				$.sessionStorage.setItem('cell', data.cell);
@@ -936,6 +942,7 @@ function diaryCall(query_string)
 			 case '#directions_map':
 				//navigator.notification.alert('in direction case');
 				$.sessionStorage.setItem('rdv', data.rdv);
+				$.sessionStorage.setItem('dest', data.sest);
 				$.sessionStorage.setItem('idcourse', data.idcourse);
 				$.sessionStorage.setItem('com', data.com);
 				$.sessionStorage.setItem('cell', data.cell);
