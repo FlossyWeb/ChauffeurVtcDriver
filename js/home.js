@@ -198,6 +198,7 @@ $( '#directions_map' ).live( 'pagebeforeshow',function(event){
 	idcourse = $.sessionStorage.getItem('idcourse');
 	var rdv = $.sessionStorage.getItem('rdv');
 	var dest = $.sessionStorage.getItem('dest');
+	var prix = $.sessionStorage.getItem('prix');
 	var com = $.sessionStorage.getItem('com');
 	var cell = $.sessionStorage.getItem('cell');
 	var cmd = $.sessionStorage.getItem('cmd');
@@ -209,6 +210,10 @@ $( '#directions_map' ).live( 'pagebeforeshow',function(event){
 	if (cell != '')
 	{
 		infos += '<a data-ajax="false" href="tel:' + cell + '" class="ui-btn ui-btn-c ui-corner-all ui-shadow ui-icon-phone ui-btn-icon-left">Joindre le client</a>';
+	}
+	if (prix != '')
+	{
+		infos += '<b>Tarif : ' + prix + ' &euro;</b></br>';
 	}
 	if (com != '')
 	{
@@ -427,13 +432,13 @@ $('#manage').live('pagecreate', function() {
 	$.post("https://www.chauffeursvtc.com/appclient/billing.php", { taxi: taxi, pass: pass, dep: dep, mngid: mngid }, function(data){
 		$("#billing").empty().append(data);
 	});
+	$.post("https://www.chauffeursvtc.com/appclient/advertising.php", { tel: tel, pass: pass, dep: dep, mngid: mngid }, function(data){
+		$("#myAdvertising").empty().append(data);
+	});
 	*/
 	// Rating infos
 	$.post("https://www.chauffeursvtc.com/appclient/myrates.php", { tel: tel, pass: pass, dep: dep, mngid: mngid }, function(data){
 		$("#myRates").empty().append(data);
-	});
-	$.post("https://www.chauffeursvtc.com/appclient/advertising.php", { tel: tel, pass: pass, dep: dep, mngid: mngid }, function(data){
-		$("#myAdvertising").empty().append(data);
 	});
 });
 function getRandomInt(min, max) {
@@ -866,6 +871,7 @@ function directCall()
 				//navigator.notification.alert('in direction case');
 				$.sessionStorage.setItem('rdv', data.rdv);
 				$.sessionStorage.setItem('dest', data.dest);
+				$.sessionStorage.setItem('prix', data.prix);
 				$.sessionStorage.setItem('idcourse', data.idcourse);
 				$.sessionStorage.setItem('com', data.com);
 				$.sessionStorage.setItem('cell', data.cell);
@@ -942,7 +948,8 @@ function diaryCall(query_string)
 			 case '#directions_map':
 				//navigator.notification.alert('in direction case');
 				$.sessionStorage.setItem('rdv', data.rdv);
-				$.sessionStorage.setItem('dest', data.sest);
+				$.sessionStorage.setItem('dest', data.dest);
+				$.sessionStorage.setItem('prix', data.prix);
 				$.sessionStorage.setItem('idcourse', data.idcourse);
 				$.sessionStorage.setItem('com', data.com);
 				$.sessionStorage.setItem('cell', data.cell);
@@ -1158,7 +1165,8 @@ function taximedia()
 function help()
 {
 	//window.plugins.childBrowser.showWebPage('http://chauffeursvtc.com/client/help.html', { showLocationBar: true });
-	window.open('https://www.chauffeursvtc.com/client/help.html','_blank','location=false,enableViewportScale=yes,closebuttoncaption=Fermer');
+	//window.open('https://www.chauffeursvtc.com/client/help.html','_blank','location=false,enableViewportScale=yes,closebuttoncaption=Fermer');
+	window.open('https://www.chauffeursvtc.com','_blank','location=false,enableViewportScale=yes,closebuttoncaption=Fermer');
 }
 function cgv()
 {
