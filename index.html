@@ -103,9 +103,12 @@
 							<input type="text" name="nom" placeholder="Nom" maxlength="60" size="20" class="required"><em></em>
 							<input type="text" name="prenom" placeholder="Pr&eacute;nom" maxlength="60" size="20" class="required"><em></em>
 							<input type="tel" name="tel" placeholder="T&eacute;l&eacute;phone (Sans espace SVP)" maxlength="10" size="20" class="required"><em></em>
+							<input type="tel" name="station" id="areaCode" placeholder="Code Postal" maxlength="5" size="20" class="required">
 							<input type="email" name="email" id="email" placeholder="Adresse email" maxlength="60" size="20" class="required email"><em></em>
 							<input type="email" name="confirmail" placeholder="Confirmez email SVP" maxlength="60" size="20" class="required email"><em></em>
-							<input type="tel" name="station" placeholder="Code Postal" maxlength="5" size="20" class="required">
+							<div id="cityBox">
+								<select name="city" id="city" class="required"><option value="">Ville</option></select><em></em>
+							</div>
 							<!-- <em><b>Attention il s'agit du Code Postal de la Commune de stationnement de votre ADS, pas de votre habitation.</b></em> -->
 							<input type="submit" name="submit1" id="subNameStep" value="Continuer">
 						</form>

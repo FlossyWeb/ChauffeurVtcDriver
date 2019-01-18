@@ -1815,6 +1815,7 @@ $(document).ready(function(){
 		,
 		errorPlacement: function(error, element) {
 			error.appendTo( element.parent().next('em') );
+			error.appendTo( element.parent().parent().next('em') ); // selectBoxes
 		}
 		*/
 		// Form submission if every thing is ok

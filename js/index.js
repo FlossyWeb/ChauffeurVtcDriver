@@ -283,7 +283,23 @@ $(document).on( 'pagecreate', function() {
 		$('#RegCabStep').fadeOut();
 		$('#RegCbStep').fadeOut();
 	}
-	
+	$("#cb").val(1).flipswitch( "refresh" );
+	if($('#areaCode').val().length==5) {
+		$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $('#areaCode').val(), pass: true }, function(data){
+			$("#cityBox").empty().append(data).trigger('create');
+			//$("#cityBox").trigger('create');
+			//$('#insee').val(insee).selectmenu( "refresh" );
+		});
+	}
+	$('#areaCode').change(function () {
+		if($(this).val().length==5) {
+			$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $(this).val(), pass: true }, function(data){
+				$("#cityBox").empty().append(data).trigger('create');
+				//$("#cityBox").trigger('create');
+				//$('#insee').val(insee).selectmenu( "refresh" );
+			});
+		}
+	});
 	$("#login").submit(function(event) {
 		// stop form from submitting normally 
 		event.preventDefault();
@@ -419,6 +435,7 @@ $(document).ready(function(){
 		rules: {
 		 nom: "required",
 		 prenom: "required",
+		 city: "required",
 		 tel: {
 		   required: true,
 		   phone: true
@@ -441,6 +458,7 @@ $(document).ready(function(){
 		messages: {
 		 nom: "Le Nom est obligatoire",
 		 prenom: "Le Pr&eacute;nom est obligatoire",
+		 city: "La ville est obligatoire",
 		 tel: {
 		   required: "Le T&eacute;l&eacute;phone est obligatoire"
 		 },
@@ -462,6 +480,7 @@ $(document).ready(function(){
 		,
 		errorPlacement: function(error, element) {
 			error.appendTo( element.parent().next('em') );
+			error.appendTo( element.parent().parent().next('em') ); // selectBoxes
 		}
 		// Show errors sum up on top of form
 		,
@@ -525,7 +544,8 @@ $(document).ready(function(){
 				$('input[type=submit]#subNameStep').button('enable');
 				$.mobile.loading( "hide" );
 			}).fail(function (jqXHR, textStatus, errorThrown) {
-				navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				if (app) navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				else alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed);
 			});
 		} // submitHandler Ends
 	});
@@ -540,6 +560,7 @@ $(document).ready(function(){
 		,
 		errorPlacement: function(error, element) {
 			error.appendTo( element.parent().next('em') );
+			error.appendTo( element.parent().parent().next('em') ); // selectBoxes
 		}
 		// Show errors sum up on top of form
 		,
@@ -591,7 +612,8 @@ $(document).ready(function(){
 				$('input[type=submit]#subCabStep').button('enable');
 				$.mobile.loading( "hide" );
 			}).fail(function (jqXHR, textStatus, errorThrown) {
-				navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				if (app) navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				else alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed);
 			});
 		} // submitHandler Ends
 	});
@@ -619,6 +641,7 @@ $(document).ready(function(){
 		,
 		errorPlacement: function(error, element) {
 			error.appendTo( element.parent().next('em') );
+			error.appendTo( element.parent().parent().next('em') ); // selectBoxes
 		}
 		// Show errors sum up on top of form
 		,
@@ -669,6 +692,7 @@ $(document).ready(function(){
 				if (data.subscribed && data.payzen)
 				{
 					$.localStorage.setItem('regStep', 'DONE');
+					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ', vous avez bien cr&eacute;&eacute; votre compte et vous serez averti de son activation par un futur message.<br><span style="color:#09F;">Afin de finaliser votre inscription, veuillez nous transmettre les documents list&eacutes sur cette page.</span><br>Vous recevrez dans quelques instants un message explicatif &agrave; cet adresse : <span style="color:#09F;">' + data.email + '</span>, merci.<br></b></p>';
 					//openSomeUrl('https://goo.gl/ZxTY8D');
 					/*
 					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ' Voici les informations d&rsquo;identification qui vous permettront d&rsquo;acc&egrave;der &agrave; votre compte :<br><span style="color:#09F;">Identifiant = ' + data.tel + '<br>Mot de passe = ' + data.pwd + '</span><br>Vous les recevrez dans quelques instants &agrave; cet email : <span style="color:#09F;">' + data.email + '</span>, merci.<br></b></p>';
@@ -744,7 +768,8 @@ $(document).ready(function(){
 				$('input[type=submit]#subCbStep').button('enable');
 				$.mobile.loading( "hide" );
 			}).fail(function (jqXHR, textStatus, errorThrown) {
-				navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				if (app) navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				else alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed);
 			});
 		} // submitHandler Ends
 	});
@@ -788,7 +813,8 @@ $(document).ready(function(){
 				$("#returns").empty().append(display);
 				$( "#answer" ).popup( "open", { positionTo: "window" } );
 			}, "json").fail(function (jqXHR, textStatus, errorThrown) {
-				navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus, errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				if (app) navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+				else alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed);
 			});
 		} // submitHandler Ends
 		/* Put errors below fields
