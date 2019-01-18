@@ -55,7 +55,7 @@ function active()
 			}, 1000);
 		}
 		else if (!data.active) {
-			var display = '<p style="color:red;"><b>Il semblerait que votre compte ait &eacute;t&eacute; d&eacute;sactiv&eacute;.<br>Il s&rsquo;agit souvent d&rsquo;une CB expir&eacute;e, que vous pouvez mettre &agrave; jour sur cette page.<br>Cela peut aussi &ecirc;tre la cause d&rsquo;un impay&eacute;, dans ce cas veuillez</b></p><a href="mailto:contact@chauffeursvtc.com" class="ui-btn ui-btn-c ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Nous contacter</a>';
+			var display = '<p style="color:red;"><b>Il semblerait que votre compte ne soit pas actif.<br>Si cela vous para&icirc;t anormal, veuillez...</b></p><a href="mailto:contact@chauffeursvtc.com" class="ui-btn ui-btn-c ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Nous contacter</a>';
 			$("#returns").empty().append(display);
 			setTimeout(function(){
 				$( "#answer" ).popup( "open", { positionTo: "window" } );
@@ -276,7 +276,7 @@ $(document).on( 'pagecreate', function() {
 		$('#RegNameStep').fadeOut();
 		$('#RegCabStep').fadeOut();
 		$('#RegCbStep').fadeOut();
-		$('#done').append('<p><b>Vous &ecirc;tes d&eacute;j&agrave; enregistr&eacute;, vous pouvez vous connecter ci-dessous.</b></p>');
+		$('#done').append('<p><b>Vous &ecirc;tes d&eacute;j&agrave; enregistr&eacute;, vous pouvez vous connecter ci-dessous avec vos identifiants.<br><ul>Sinon veuillez nous communiquer les justificatifs suivant : <li> - Extrait Kbis de moins de 3 mois</li><li> - Carte Nationale d&rsquo;Identit&eacute; (recto-verso)</li><li> - Carte Pro VTC (recto-verso).</li><li> - Permis de conduire (recto-verso)</li><li> - Certificat d&rsquo;aptitude &agrave; la conduite d&eacute;livr&eacute; par la Pr&eacute;fecture</li><li> - Attestation d&rsquo;inscription au registre des transports avec chauffeur</li><li> - Photo du macaron VTC accol&eacute; sur le pare-brise de votre v&eacute;hicule</li><li> - Photo du v&eacute;hicule</li><li> - Carte grise du v&eacute;hicule (recto-verso)</li><li> - Attestation d&rsquo;assurance du v&eacute;hicule</li><li> - Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux.</li></ul></b></p><a href="#" onClick="openSomeUrl(\'https://goo.gl/ZxTY8D\')" class="ui-btn ui-btn-icon-left ui-icon-plus ui-shadow-icon ui-corner-all">D&eacute;posez vos justificatifs</a>');
 	}
 	else {
 		//$('#RegNameStep').fadeIn();
@@ -297,6 +297,17 @@ $(document).on( 'pagecreate', function() {
 			$.localStorage.setItem('cpro', data.cpro);
 			$.localStorage.setItem('tel', data.tel);
 			$.localStorage.setItem('siret', data.siret);
+			$.localStorage.setItem('type', data.type);
+			$.localStorage.setItem('cb', data.cb);
+			$.localStorage.setItem('medic', data.medic);
+			$.localStorage.setItem('animal', data.animal);
+			$.localStorage.setItem('passengers', data.passengers);
+			$.localStorage.setItem('color', data.color);
+			$.localStorage.setItem('lang', data.lang);
+			$.localStorage.setItem('imat', data.imat);
+			$.localStorage.setItem('constructor', data.constructor);
+			$.localStorage.setItem('model', data.model);
+			$.localStorage.setItem('amex', data.amex);
 			$.localStorage.setItem('station', data.station);
 			$.localStorage.setItem('email', data.email);
 			$.localStorage.setItem('dep', data.dep);
@@ -657,8 +668,10 @@ $(document).ready(function(){
 				var display = '';
 				if (data.subscribed && data.payzen)
 				{
-					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ' Voici les informations d&rsquo;identification qui vous permettront d&rsquo;acc&egrave;der &agrave; votre compte :<br><span style="color:#09F;">Identifiant = ' + data.tel + '<br>Mot de passe = ' + data.pwd + '</span><br>Vous les recevrez dans quelques instants &agrave; cet email : <span style="color:#09F;">' + data.email + '</span>, merci.<br></b></p>';
 					$.localStorage.setItem('regStep', 'DONE');
+					//openSomeUrl('https://goo.gl/ZxTY8D');
+					/*
+					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ' Voici les informations d&rsquo;identification qui vous permettront d&rsquo;acc&egrave;der &agrave; votre compte :<br><span style="color:#09F;">Identifiant = ' + data.tel + '<br>Mot de passe = ' + data.pwd + '</span><br>Vous les recevrez dans quelques instants &agrave; cet email : <span style="color:#09F;">' + data.email + '</span>, merci.<br></b></p>';
 					// Automatically logs registered user in...
 					var log = data.tel;
 					var pwd = data.pwd;
@@ -698,6 +711,7 @@ $(document).ready(function(){
 							//document.location.href='home.html';
 						}
 					}, "json");
+					*/
 				}
 				else {
 					//display = '<p style="color:red;"><b>Vous n&rsquo;avez pas correctement rempli le formulaire d&rsquo;inscription. Nous vous prions de modifier les informations suivantes, si vous d&eacute;sirez  acc&egrave;der &agrave; ce service, d&eacute;sol&eacute;.</b></p>';

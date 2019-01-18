@@ -1755,7 +1755,6 @@ $(document).ready(function(){
 		 },
 		 nom: "required",
 		 prenom: "required",
-		 taxi: "required",
 		 cpro: "required",
 		 brand: "required",
 		 siret: {
@@ -1789,7 +1788,6 @@ $(document).ready(function(){
 		 },
 		 nom: "Ce champs est obligatoire",
 		 prenom: "Ce champs est obligatoire",
-		 taxi: "Ce champs est obligatoire",
 		 cpro: "Le N&deg; de Carte Professionelle est obligatoire",
 		 siret: {
 		   required: "Le num&eacute;ro SIRET est obligatoire"
