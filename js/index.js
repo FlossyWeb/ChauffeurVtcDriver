@@ -34,6 +34,7 @@ function active()
 		$.localStorage.setItem('amex', data.amex);
 		$.localStorage.setItem('email', data.email);
 		$.localStorage.setItem('station', data.station);
+		$.localStorage.setItem('city', data.city);
 		$.localStorage.setItem('dep', data.dep);
 		$.localStorage.setItem('group', data.group);
 		$.localStorage.setItem('mngid', data.mngid);
@@ -325,6 +326,7 @@ $(document).on( 'pagecreate', function() {
 			$.localStorage.setItem('model', data.model);
 			$.localStorage.setItem('amex', data.amex);
 			$.localStorage.setItem('station', data.station);
+			$.localStorage.setItem('city', data.city);
 			$.localStorage.setItem('email', data.email);
 			$.localStorage.setItem('dep', data.dep);
 			$.localStorage.setItem('group', data.group);
@@ -510,6 +512,7 @@ $(document).ready(function(){
 				$.localStorage.setItem('prenom', data.prenom);
 				$.localStorage.setItem('tel', data.tel);
 				$.localStorage.setItem('station', data.station);
+				$.localStorage.setItem('city', data.city);
 				$.localStorage.setItem('dep', data.dep);
 				$.localStorage.setItem('email', data.email);
 				$.localStorage.setItem('group', data.group);
@@ -678,6 +681,7 @@ $(document).ready(function(){
 				$.localStorage.setItem('model', data.model);
 				$.localStorage.setItem('amex', data.amex);
 				$.localStorage.setItem('station', data.station);
+				$.localStorage.setItem('city', data.city);
 				$.localStorage.setItem('email', data.email);
 				$.localStorage.setItem('group', data.group);
 				$.localStorage.setItem('pwd', data.pwd);

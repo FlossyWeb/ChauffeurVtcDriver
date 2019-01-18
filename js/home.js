@@ -8,6 +8,7 @@ var prenom = $.localStorage.getItem('prenom');
 var siret = $.localStorage.getItem('siret');
 var cpro = $.localStorage.getItem('cpro');
 var station = $.localStorage.getItem('station');
+var city = $.localStorage.getItem('city');
 var dep = $.localStorage.getItem('dep');
 var group = $.localStorage.getItem('group');
 var mngid = $.localStorage.getItem('mngid');
@@ -166,6 +167,7 @@ function reloadVars() {
 	siret = $.localStorage.getItem('siret');
 	cpro = $.localStorage.getItem('cpro');
 	station = $.localStorage.getItem('station');
+	city = $.localStorage.getItem('city');
 	dep = $.localStorage.getItem('dep');
 	group = $.localStorage.getItem('group');
 	mngid = $.localStorage.getItem('mngid');
@@ -374,6 +376,7 @@ $('#manage').live('pagecreate', function() {
 	$('#confirmail').val(email);
 	$('#cpro').val(cpro);
 	$('#station').val(station);
+	$('#city').val(city).selectmenu( "refresh" );
 	$('#siret').val(siret);
 	$('#imat').val(imat);
 	$('#constructor').val(constructor);
@@ -414,6 +417,22 @@ $('#manage').live('pagecreate', function() {
 			}
 		}
 	}
+	if($('#station').val().length==5) {
+		$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $('#station').val(), pass: true }, function(data){
+			$("#cityBox").empty().append(data).trigger('create');
+			//$("#cityBox").trigger('create');
+			//$('#insee').val(insee).selectmenu( "refresh" );
+		});
+	}
+	$('#station').change(function () {
+		if($(this).val().length==5) {
+			$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $(this).val(), pass: true }, function(data){
+				$("#cityBox").empty().append(data).trigger('create');
+				//$("#cityBox").trigger('create');
+				//$('#insee').val(insee).selectmenu( "refresh" );
+			});
+		}
+	});
 	/*
 	//Le.Taxi Form...
 	$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: station, pass: pass, accessHash: accessHash }, function(data){
@@ -1745,7 +1764,7 @@ $(document).ready(function(){
 
 	$.validator.addMethod('cp', function (value) {
 		return /^[0-9]{5}$/.test(value);
-	}, 'Le CP fait 5 chiffres sans espace.');
+	}, 'Le Code Postal fait 5 chiffres sans espace.');
 
 	$("#modmy").validate({
 		rules: {
@@ -1756,14 +1775,14 @@ $(document).ready(function(){
 		 nom: "required",
 		 prenom: "required",
 		 cpro: "required",
-		 brand: "required",
+		 city: "required",
 		 siret: {
 		   required: true,
 		   siret: true
 		 },
-		 imat: "Ce champs est obligatoire",
-		 constructor: "Ce champs est obligatoire",
-		 model: "Ce champs est obligatoire",
+		 imat: "required",
+		 constructor: "required",
+		 model: "required",
 		 tel: {
 		   required: true,
 		   phone: true
@@ -1789,6 +1808,7 @@ $(document).ready(function(){
 		 nom: "Ce champs est obligatoire",
 		 prenom: "Ce champs est obligatoire",
 		 cpro: "Le N&deg; de Carte Professionelle est obligatoire",
+		 city: "La ville est obligatoire",
 		 siret: {
 		   required: "Le num&eacute;ro SIRET est obligatoire"
 		 },
@@ -1834,6 +1854,7 @@ $(document).ready(function(){
 				$.localStorage.setItem('cpro', data.cpro);
 				$.localStorage.setItem('email', data.email);
 				$.localStorage.setItem('station', data.station);
+				$.localStorage.setItem('city', data.city);
 				$.localStorage.setItem('dep', data.dep);
 				$.sessionStorage.setItem('pwd', data.pwd);
 				$.sessionStorage.setItem('modmy', data.modmy);
@@ -1860,6 +1881,7 @@ $(document).ready(function(){
 				$('#email').val(data.email);
 				$('#confirmail').val(data.email);
 				$('#station').val(data.station);
+				$('#city').val(data.city).selectmenu( "refresh" );
 				$('#type').val(data.type).selectmenu( "refresh" );
 				$('#cb').val(data.cb).flipswitch( "refresh" );
 				//$('#medic').val(data.medic).flipswitch( "refresh" );

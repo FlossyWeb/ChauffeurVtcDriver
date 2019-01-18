@@ -560,11 +560,14 @@
                                 <!-- <input type="tel" name="taxi" id="taxi" placeholder="ADS (N&deg taxi)" maxlength="6" size="20" class="required"> -->
                                 <input type="tel" name="tel" id="tel" placeholder="T&eacute;l&eacute;phone (Sans espace SVP)" maxlength="10" size="20" class="required"><em></em>
                                 <input type="text" name="cpro" id="cpro" placeholder="N&deg; Carte Professionnelle" maxlength="32" size="20" class="required"><em></em>
-                                <input type="tel" name="station" id="station" placeholder="CP Commune Rattachement" maxlength="5" size="20" class="required"><em></em>
-								<input type="text" id="siret" name="siret" data-clear-btn="true" placeholder="Siret" maxlength="32" size="20" pattern="[0-9]{14}$" class="required">
+                                <input type="tel" name="station" id="station" placeholder="Code Postal" maxlength="5" size="20" class="required"><em></em>
+								<input type="text" id="siret" name="siret" data-clear-btn="true" placeholder="Siret" maxlength="32" size="20" class="required">
 								<input type="text" id="imat" name="imat" data-clear-btn="true" placeholder="Immatriculation" maxlength="20" size="20" class="required">
 								<input type="text" id="constructor" name="constructor" data-clear-btn="true" placeholder="Constructeur" maxlength="60" size="20" class="required">
 								<input type="text" name="model" id="model" placeholder="Mod&egrave;le" maxlength="60" size="20" class="required">
+								<div id="cityBox">
+									<select name="city" id="city" class="required"><option value="">Ville</option></select>
+								</div>
                                 <select name="type" id="type">
                                     <option selected value="">Type de vehicule</option>
                                     <option value="Berline">Berline</option>
