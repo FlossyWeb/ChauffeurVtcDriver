@@ -102,13 +102,13 @@
 							</select>
 							<input type="text" name="nom" placeholder="Nom" maxlength="60" size="20" class="required"><em></em>
 							<input type="text" name="prenom" placeholder="Pr&eacute;nom" maxlength="60" size="20" class="required"><em></em>
-							<input type="tel" name="tel" placeholder="T&eacute;l&eacute;phone (Sans espace SVP)" maxlength="10" size="20" class="required"><em></em>
 							<input type="tel" name="station" id="areaCode" placeholder="Code Postal" maxlength="5" size="20" class="required">
-							<input type="email" name="email" id="email" placeholder="Adresse email" maxlength="60" size="20" class="required email"><em></em>
-							<input type="email" name="confirmail" placeholder="Confirmez email SVP" maxlength="60" size="20" class="required email"><em></em>
 							<div id="cityBox">
 								<select name="city" id="city" class="required"><option value="">Ville</option></select><em></em>
 							</div>
+							<input type="tel" name="tel" placeholder="T&eacute;l&eacute;phone (Sans espace SVP)" maxlength="10" size="20" class="required"><em></em>
+							<input type="email" name="email" id="email" placeholder="Adresse email" maxlength="60" size="20" class="required email"><em></em>
+							<input type="email" name="confirmail" placeholder="Confirmez email SVP" maxlength="60" size="20" class="required email"><em></em>
 							<!-- <em><b>Attention il s'agit du Code Postal de la Commune de stationnement de votre ADS, pas de votre habitation.</b></em> -->
 							<input type="submit" name="submit1" id="subNameStep" value="Continuer">
 						</form>
@@ -119,8 +119,8 @@
 							<select name="type" id="type">
 								<option selected value="Berline">Type de vehicule</option>
 								<option value="Berline">Berline</option>
-								<option value="Break 5 places">Break 5 places</option>
-								<option value="Monospace">Monospace</option>
+								<option value="Break">Break 5 places</option>
+								<option value="Van">Van 7 places</option>
 							</select><em></em>
 							<label for="passengers">Nombre maximum de passagers pris en charge :</label>
 							<input name="passengers" id="passengers" min="1" max="8" value="1" data-show-value="true" data-popup-enabled="true" type="range">
@@ -256,29 +256,12 @@
 							<input type="hidden" name="tel" id="telcb" value=""/>
 							<input type="hidden" name="dep" id="depcb" value=""/>
 							<input type="submit" name="submit3" id="subCbStep" value="Envoyer">
-							<p><b>
-								Vous recevrez par email, dans quelques instants, les informations concernant la suite du processus d'inscription et sa validation.
-								Vous pouvez finaliser ce processus en nous communicant vos justificatifs.
-								<ul> A savoir:
-									<li> - Extrait Kbis de moins de 3 mois</li>
-									<li> - Carte Nationale d&rsquo;Identit&eacute; (recto-verso)</li>
-									<li> - Carte Pro VTC (recto-verso).</li>
-									<li> - Permis de conduire (recto-verso)</li>
-									<li> - Certificat d&rsquo;aptitude &agrave; la conduite d&eacute;livr&eacute; par la Pr&eacute;fecture</li>
-									<li> - Attestation d&rsquo;inscription au registre des transports avec chauffeur</li>
-									<li> - Photo du macaron VTC accol&eacute; sur le pare-brise de votre v&eacute;hicule</li>
-									<li> - Photo du v&eacute;hicule</li>
-									<li> - Carte grise du v&eacute;hicule (recto-verso)</li>
-									<li> - Attestation d&rsquo;assurance du v&eacute;hicule</li>
-									<li> - Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux.</li>
-								</ul>
-							</b></p>
 							<a href="#" onClick="openSomeUrl('https://goo.gl/ZxTY8D')" class="ui-btn ui-btn-icon-left ui-icon-plus ui-shadow-icon ui-corner-all">D&eacute;posez vos justificatifs</a>
 						</form>
 						</fieldset>    
 						<div id="done"></div>
 					</div>
-					<div data-role="collapsible" data-collapsed="false">
+					<div data-role="collapsible" data-collapsed="false" id="log_collaps">
 						<h1>
 							Identifiez-Vous 
 						</h1>

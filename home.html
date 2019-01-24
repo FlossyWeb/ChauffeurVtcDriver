@@ -558,21 +558,20 @@
                                 <input type="text" id="nom" name="nom" data-clear-btn="true" placeholder="Nom" maxlength="60" size="20" value="">
                                 <input type="text" id="prenom" name="prenom" data-clear-btn="true" placeholder="Pr&eacute;nom" maxlength="60" size="20" value="">
                                 <!-- <input type="tel" name="taxi" id="taxi" placeholder="ADS (N&deg taxi)" maxlength="6" size="20" class="required"> -->
-                                <input type="tel" name="tel" id="tel" placeholder="T&eacute;l&eacute;phone (Sans espace SVP)" maxlength="10" size="20" class="required"><em></em>
-                                <input type="text" name="cpro" id="cpro" placeholder="N&deg; Carte Professionnelle" maxlength="32" size="20" class="required"><em></em>
                                 <input type="tel" name="station" id="station" placeholder="Code Postal" maxlength="5" size="20" class="required"><em></em>
+								<div id="cityBox">
+									<select name="city" id="city" class="required"><option value="">Ville</option></select>
+								</div>
+                                <input type="text" name="cpro" id="cpro" placeholder="N&deg; Carte Professionnelle" maxlength="32" size="20" class="required"><em></em>
 								<input type="text" id="siret" name="siret" data-clear-btn="true" placeholder="Siret" maxlength="32" size="20" class="required">
 								<input type="text" id="imat" name="imat" data-clear-btn="true" placeholder="Immatriculation" maxlength="20" size="20" class="required">
 								<input type="text" id="constructor" name="constructor" data-clear-btn="true" placeholder="Constructeur" maxlength="60" size="20" class="required">
 								<input type="text" name="model" id="model" placeholder="Mod&egrave;le" maxlength="60" size="20" class="required">
-								<div id="cityBox">
-									<select name="city" id="city" class="required"><option value="">Ville</option></select>
-								</div>
                                 <select name="type" id="type">
                                     <option selected value="">Type de vehicule</option>
                                     <option value="Berline">Berline</option>
-                                    <option value="Break 5 places">Break 5 places</option>
-                                    <option value="Monospace">Monospace</option>
+                                    <option value="Break">Break 5 places</option>
+									<option value="Van">Van 7 places</option>
                                 </select><em></em>
                                 <label for="passengers">Nombre maximum de passagers pris en charge :</label>
                                 <input name="passengers" id="passengers" min="1" max="8" value="1" data-show-value="true" data-popup-enabled="true" type="range">
@@ -678,6 +677,7 @@
                                         Oui
                                     </option>
                                 </select>
+                                <input type="tel" name="tel" id="tel" placeholder="T&eacute;l&eacute;phone (Sans espace SVP)" maxlength="10" size="20" class="required"><em></em>
                                 <input type="email" name="email" data-clear-btn="true" id="email" placeholder="Adresse email" maxlength="60" size="20" value="">
                                 <input type="email" name="confirmail" data-clear-btn="true" id="confirmail" placeholder="Confirmez email SVP" maxlength="60" size="20" value="">
                                 <input type="hidden" name="modmy" value="1" />
