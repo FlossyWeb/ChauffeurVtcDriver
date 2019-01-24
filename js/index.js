@@ -56,7 +56,7 @@ function active()
 			}, 1000);
 		}
 		else if (!data.active) {
-			var display = '<p style="color:red;"><b>Il semblerait que votre compte ne soit pas actif.<br>Si cela vous para&icirc;t anormal, veuillez...</b></p><a href="mailto:contact@chauffeursvtc.com" class="ui-btn ui-btn-c ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Nous contacter</a>';
+			var display = '<p style="color:red;"><b>Il semblerait que votre compte ne soit pas actif.<br>Si cela vous para&icirc;t anormal, veuillez...</b></p><a href="mailto:prestataires@chauffeursvtc.com" class="ui-btn ui-btn-c ui-corner-all ui-shadow ui-icon-navigation ui-btn-icon-left">Nous contacter</a>';
 			$("#returns").empty().append(display);
 			setTimeout(function(){
 				$( "#answer" ).popup( "open", { positionTo: "window" } );
