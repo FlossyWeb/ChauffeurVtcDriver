@@ -151,6 +151,8 @@
 								<input id="checkbox5" name="al" type="checkbox">
 								<label for="checkbox5">Allemand</label>
 							</fieldset>
+							<input type="hidden" name="cb" id="cb" value="1"/>
+							<!--
 							<label for="cb">
 								Paiement CB : 
 							</label>
@@ -162,7 +164,6 @@
 									Oui
 								</option>
 							</select>
-							<!--
 							<label for="medic">
 								Vehicule conventionn&eacute; : 
 							</label>
@@ -196,12 +197,13 @@
 							<input type="text" id="imat" name="imat" data-clear-btn="true" placeholder="Immatriculation" maxlength="20" size="20" class="required">
 							<input type="text" id="constructor" name="constructor" data-clear-btn="true" placeholder="Constructeur" maxlength="60" size="20" class="required">
 							<input type="text" name="model" id="model" placeholder="Mod&egrave;le" maxlength="60" size="20" class="required">
+							<input type="hidden" name="amex" id="amex" value=""/>
+						<!--
 							<select id="amex" name="amex"> 
 								<option value="" selected>amex</option>
 								<option value="1">OUI</option>
 								<option value="0">NON</option>
 							</select>
-						<!--
 							<h3 style="color:#333;">Infos CB : </h3>
                             <a href="#" onClick="bankInfo()" class=""><b>Plus d&rsquo;informations sur le syst&egrave;me de paiement</b></a>
 							<select name="brand" id="brand">
