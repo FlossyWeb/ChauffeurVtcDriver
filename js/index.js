@@ -284,7 +284,7 @@ $(document).on( 'pagecreate', function() {
 		$('#RegCabStep').fadeOut();
 		$('#RegCbStep').fadeOut();
 	}
-	$("#cb").val(1).flipswitch( "refresh" );
+	//$("#cb").val(1).flipswitch( "refresh" );
 	if($('#areaCode').val().length==5) {
 		$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $('#areaCode').val(), pass: true }, function(data){
 			$("#cityBox").empty().append(data).trigger('create');
