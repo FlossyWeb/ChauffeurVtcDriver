@@ -235,7 +235,7 @@ var camearaOptions = {
 	sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
 }
 function getImage(rename) {
-	renameUpload = rename;
+	renameUpload = rename+'_'+mngid+'_'+tel;
 	navigator.camera.getPicture(uploadPhoto,onGetPictureError, camearaOptions);
 }
 
@@ -255,13 +255,21 @@ function uploadPhoto(imageURI) {
 	options.chunkedMode = false;
 
 	var ft = new FileTransfer();
+	ft.onprogress = function(progressEvent) {
+		if (progressEvent.lengthComputable) {
+			loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+		} else {
+			loadingStatus.increment();
+		}
+	};
 	ft.upload(imageURI, "https://www.chauffeursvtc.com/upload.php",
-	function (result) {
-		console.log(JSON.stringify(result));
-	},
-	function (error) {
-		console.log(JSON.stringify(error));
-	}, options);
+		function (result) {
+			navigator.notification.alert(JSON.stringify(result), alertDismissed, 'ChauffeursVTC', 'OK');
+		},
+		function (error) {
+			navigator.notification.alert(JSON.stringify(error), alertDismissed, 'ChauffeursVTC', 'OK');
+		}, options
+	);
 }
 function bankInfo()
 {
@@ -312,13 +320,15 @@ $(document).on( 'pagecreate', function() {
 		$('#RegNameStep').fadeOut();
 		$('#RegCabStep').fadeOut();
 		$('#RegCbStep').fadeOut();
-		$('#done').append('<p><b>Vous &ecirc;tes d&eacute;j&agrave; enregistr&eacute;, vous pouvez vous connecter ci-dessous avec vos identifiants.<br><ul>Sinon veuillez nous communiquer les justificatifs suivant : <li> Extrait Kbis de moins de 3 mois</li><li> Carte Nationale d&rsquo;Identit&eacute; (recto-verso)</li><li> Carte Pro VTC (recto-verso).</li><li> Permis de conduire (recto-verso)</li><li> Certificat d&rsquo;aptitude &agrave; la conduite d&eacute;livr&eacute; par la Pr&eacute;fecture</li><li> Attestation d&rsquo;inscription au registre des transports avec chauffeur</li><li> Photo du macaron VTC accol&eacute; sur le pare-brise de votre v&eacute;hicule</li><li> Photo du v&eacute;hicule</li><li> Carte grise du v&eacute;hicule (recto-verso)</li><li> Attestation d&rsquo;assurance du v&eacute;hicule</li><li> Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux.</li></ul></b></p><a href="#" onClick="openSomeUrl(\'https://goo.gl/ZxTY8D\')" class="ui-btn ui-btn-icon-left ui-icon-plus ui-shadow-icon ui-corner-all">D&eacute;posez vos justificatifs</a>');
+		$('#done').show();
+		//$('#done').append('<p><b>Vous &ecirc;tes d&eacute;j&agrave; enregistr&eacute;, vous pouvez vous connecter ci-dessous avec vos identifiants.<br><ul>Sinon veuillez nous communiquer les justificatifs suivant : <li> Extrait Kbis de moins de 3 mois</li><li> Carte Nationale d&rsquo;Identit&eacute; (recto-verso)</li><li> Carte Pro VTC (recto-verso).</li><li> Permis de conduire (recto-verso)</li><li> Certificat d&rsquo;aptitude &agrave; la conduite d&eacute;livr&eacute; par la Pr&eacute;fecture</li><li> Attestation d&rsquo;inscription au registre des transports avec chauffeur</li><li> Photo du macaron VTC accol&eacute; sur le pare-brise de votre v&eacute;hicule</li><li> Photo du v&eacute;hicule</li><li> Carte grise du v&eacute;hicule (recto-verso)</li><li> Attestation d&rsquo;assurance du v&eacute;hicule</li><li> Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux.</li></ul></b></p><a href="#" onClick="openSomeUrl(\'https://goo.gl/ZxTY8D\')" class="ui-btn ui-btn-icon-left ui-icon-plus ui-shadow-icon ui-corner-all">D&eacute;posez vos justificatifs</a>');
 	}
 	else {
 		//$('#RegNameStep').fadeIn();
 		$('#RegCabStep').fadeOut();
 		$('#RegCbStep').fadeOut();
 	}
+	if(mngid != '') $('#done').show();
 	//$("#cb").val(1).flipswitch( "refresh" );
 	if($('#areaCode').val().length==5) {
 		$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $('#areaCode').val(), pass: true }, function(data){
@@ -706,6 +716,7 @@ $(document).ready(function(){
 			// Subs some data
 			$.post("https://www.chauffeursvtc.com/appclient/register_app_cb.php", $("#RegCbStep").serialize(), function(data) {
 				// GET SHIT BACK !!
+				$.localStorage.setItem('mngid', data.mngid);
 				$.localStorage.setItem('civil', data.civil);
 				$.localStorage.setItem('nom', data.nom);
 				$.localStorage.setItem('prenom', data.prenom);
