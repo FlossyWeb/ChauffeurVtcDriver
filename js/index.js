@@ -229,21 +229,16 @@ function errorOpenPdf(code) {
   }
 }
 var renameUpload = '';
-var cameraOptions = '';
-if(app) {
-	cameraOptions = {
+var cameraOptions = {
 		quality: 100,
 		destinationType: navigator.camera.DestinationType.FILE_URI,
 		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-	}
 }
 function getImage(rename) {
 	renameUpload = rename+'_'+mngid+'_'+tel;
-	navigator.camera.getPicture(uploadPhoto,onGetPictureError, cameraOptions);
+	navigator.camera.getPicture(uploadPhoto, onGetPictureError, cameraOptions);
 }
-
 function onGetPictureError(err){ alert(error); }
-
 function uploadPhoto(imageURI) {
 	var options = new FileUploadOptions();
 	options.fileKey = "file";

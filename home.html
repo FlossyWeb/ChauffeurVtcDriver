@@ -688,7 +688,7 @@
                                     Dans quelques minutes votre compte sera mis &agrave; jour avec ces informations.<br>
                                     <span style="color:#F00;">Attention, si vous modifiez votre num&eacute;ro de T&eacute;l&eacute;phone, il devient votre nouvel identifiant.</span>
                                 </b></p>
-								<a href="#" onClick="openSomeUrl('https://goo.gl/ZxTY8D')" class="ui-btn ui-btn-icon-left ui-icon-plus ui-shadow-icon ui-corner-all">D&eacute;posez vos justificatifs</a>
+								<a href="#" onClick="goToSection('#manage', '#uploadCollaps')" class="ui-btn ui-btn-icon-left ui-icon-plus ui-shadow-icon ui-corner-all">D&eacute;posez vos justificatifs</a>
                             </form>
                             </fieldset>    
                     
@@ -742,6 +742,49 @@
                             </form>
                             </fieldset>
                         </div>
+					<div data-role="collapsible" id="uploadCollaps">
+						<h1>
+							Envoyer vos justificatifs
+						</h1>
+						<div id="uploadZone">
+							Extrait Kbis de moins de 3 mois
+							<button onClick="getImage('kbis')" class="ui-btn ui-btn-a ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
+							<hr>
+							Carte Nationale d&rsquo;Identit&eacute; (recto-verso)
+							<button onClick="getImage('cni_recto')" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
+							<button onClick="getImage('cni_verso')" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
+							<hr>
+							Carte Pro VTC (recto-verso)
+							<button onClick="getImage('cprovtc_recto')" class="ui-btn ui-btn-c ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
+							<button onClick="getImage('cprovtc_verso')" class="ui-btn ui-btn-c ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
+							<hr>
+							Permis de conduire (recto-verso)
+							<button onClick="getImage('permis_recto')" class="ui-btn ui-btn-a ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
+							<button onClick="getImage('permis_verso')" class="ui-btn ui-btn-a ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
+							<hr>
+							Certificat d&rsquo;aptitude &agrave; la conduite d&eacute;livr&eacute; par la Pr&eacute;fecture
+							<button onClick="getImage('certapt')" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
+							<hr>
+							Attestation d’inscription au registre national des exploitants de voitures de transport avec chauffeur (REVTC)
+							<button onClick="getImage('revtc')" class="ui-btn ui-btn-c ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
+							<hr>
+							Photo du macaron VTC accol&eacute; sur le pare-brise de votre v&eacute;hicule
+							<button onClick="getImage('macaron')" class="ui-btn ui-btn-a ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
+							<hr>
+							Photo du v&eacute;hicule
+							<button onClick="getImage('vehicule')" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
+							<hr>
+							Carte grise du v&eacute;hicule (recto-verso)
+							<button onClick="getImage('cgrise_recto')" class="ui-btn ui-btn-c ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
+							<button onClick="getImage('cgrise_verso')" class="ui-btn ui-btn-c ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
+							<hr>
+							Attestation d&rsquo;assurance du v&eacute;hicule
+							<button onClick="getImage('assurance')" class="ui-btn ui-btn-a ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
+							<hr>
+							Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux
+							<button onClick="getImage('rcp')" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
+						</div>
+					</div>
 						<!--
 						<div data-role="collapsible" data-collapsed="true" id="moCbCollaps">
 							<h1>Modifier CB</h1>

@@ -1484,6 +1484,52 @@ function goScan ()
 		}
 	);
 }
+var renameUpload = '';
+var cameraOptions = {
+		quality: 100,
+		destinationType: navigator.camera.DestinationType.FILE_URI,
+		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+}
+function getImage(rename) {
+	renameUpload = rename+'_'+mngid+'_'+tel;
+	navigator.camera.getPicture(uploadPhoto, onGetPictureError, cameraOptions);
+}
+function onGetPictureError(err){ alert(error); }
+function uploadPhoto(imageURI) {
+	var options = new FileUploadOptions();
+	options.fileKey = "file";
+	options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+	options.mimeType = "image/jpeg";
+
+	var params = new Object();
+	params.pwd = "letMeUpload@ChauffeursVTC";
+	params.rename = renameUpload;
+	
+	options.params = params;
+	options.chunkedMode = false;
+
+	$.mobile.loading( "show" );
+	var ft = new FileTransfer();
+	/*
+	ft.onprogress = function(progressEvent) {
+		if (progressEvent.lengthComputable) {
+			loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+		} else {
+			loadingStatus.increment();
+		}
+	};
+	*/
+	ft.upload(imageURI, "https://www.chauffeursvtc.com/upload.php",
+		function (result) {
+			//navigator.notification.alert(JSON.stringify(result), alertDismissed, 'ChauffeursVTC', 'OK');
+			$.mobile.loading( "hide" );
+		},
+		function (error) {
+			$.mobile.loading( "hide" );
+			navigator.notification.alert('Une erreur est survenue: '+JSON.stringify(error), alertDismissed, 'ChauffeursVTC', 'OK');
+		}, options
+	);
+}
 /*
 function contactPick()
 {
