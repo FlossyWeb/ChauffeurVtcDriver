@@ -14,8 +14,7 @@ var station = $.localStorage.getItem('station');
 var dep = $.localStorage.getItem('dep');
 var mngid = $.localStorage.getItem('mngid');
 var actived;
-var openPdf;
-var camearaOptions;	
+var openPdf;	
 
 function active()
 {
@@ -217,11 +216,6 @@ if ( app ) {
 		StatusBar.overlaysWebView(false);
 		StatusBar.backgroundColorByHexString("#922268");
 		openPdf = cordova.plugins.disusered.open;
-		camearaOptions = {
-			quality: 100,
-			destinationType: navigator.camera.DestinationType.FILE_URI,
-			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-		}
 	}
 }
 function successOpenPdf() {
@@ -235,9 +229,17 @@ function errorOpenPdf(code) {
   }
 }
 var renameUpload = '';
+var cameraOptions = '';
+if(app) {
+	cameraOptions = {
+		quality: 100,
+		destinationType: navigator.camera.DestinationType.FILE_URI,
+		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+	}
+}
 function getImage(rename) {
 	renameUpload = rename+'_'+mngid+'_'+tel;
-	navigator.camera.getPicture(uploadPhoto,onGetPictureError, camearaOptions);
+	navigator.camera.getPicture(uploadPhoto,onGetPictureError, cameraOptions);
 }
 
 function onGetPictureError(err){ alert(error); }
