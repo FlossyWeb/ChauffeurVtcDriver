@@ -254,7 +254,9 @@ function uploadPhoto(imageURI) {
 	options.params = params;
 	options.chunkedMode = false;
 
+	$.mobile.loading( "show" );
 	var ft = new FileTransfer();
+	/*
 	ft.onprogress = function(progressEvent) {
 		if (progressEvent.lengthComputable) {
 			loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
@@ -262,12 +264,15 @@ function uploadPhoto(imageURI) {
 			loadingStatus.increment();
 		}
 	};
+	*/
 	ft.upload(imageURI, "https://www.chauffeursvtc.com/upload.php",
 		function (result) {
-			navigator.notification.alert(JSON.stringify(result), alertDismissed, 'ChauffeursVTC', 'OK');
+			//navigator.notification.alert(JSON.stringify(result), alertDismissed, 'ChauffeursVTC', 'OK');
+			$.mobile.loading( "hide" );
 		},
 		function (error) {
-			navigator.notification.alert(JSON.stringify(error), alertDismissed, 'ChauffeursVTC', 'OK');
+			$.mobile.loading( "hide" );
+			navigator.notification.alert('Une erreur est survenue: '+JSON.stringify(error), alertDismissed, 'ChauffeursVTC', 'OK');
 		}, options
 	);
 }
