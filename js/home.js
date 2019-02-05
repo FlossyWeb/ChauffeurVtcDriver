@@ -38,6 +38,7 @@ var getSome = false;
 var gotSome = false;
 var AppRatePrompted = false;
 var openPdf;
+var cameraOptions = new Object();	
 var pageFirstCreation = true;
 
 // Lecteur audio
@@ -1234,6 +1235,11 @@ if ( app ) {
 		});
 		//udptransmit.initialize(geoserver, 80);
 		openPdf = cordova.plugins.disusered.open;
+		cameraOptions = {
+				quality: 100,
+				destinationType: navigator.camera.DestinationType.FILE_URI,
+				sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+		}
 		// For iOS => backgroundtask
 		//backgroundtask.start(bgFunctionToRun);
 		
@@ -1485,11 +1491,6 @@ function goScan ()
 	);
 }
 var renameUpload = '';
-var cameraOptions = {
-		quality: 100,
-		destinationType: navigator.camera.DestinationType.FILE_URI,
-		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-}
 function getImage(rename) {
 	if(mngid!==null && tel!==null) renameUpload = rename+'_'+mngid+'_'+tel;
 	else renameUpload = rename+'_inconnu';
