@@ -235,7 +235,8 @@ var cameraOptions = {
 		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
 }
 function getImage(rename) {
-	renameUpload = rename+'_'+mngid+'_'+tel;
+	if(mngid!==null && tel!==null) renameUpload = rename+'_'+mngid+'_'+tel;
+	else renameUpload = rename+'_inconnu';
 	navigator.camera.getPicture(uploadPhoto, onGetPictureError, cameraOptions);
 }
 function onGetPictureError(err){ alert(error); }
@@ -265,8 +266,8 @@ function uploadPhoto(imageURI) {
 	*/
 	ft.upload(imageURI, "https://www.chauffeursvtc.com/upload.php",
 		function (result) {
-			//navigator.notification.alert(JSON.stringify(result), alertDismissed, 'ChauffeursVTC', 'OK');
 			$.mobile.loading( "hide" );
+			navigator.notification.alert("Le document a bien été envoyé.", alertDismissed, 'ChauffeursVTC', 'OK');
 		},
 		function (error) {
 			$.mobile.loading( "hide" );
