@@ -53,7 +53,7 @@
 	<plugin name="cordova-plugin-calendar" source="npm" />
 	<plugin name="phonegap-plugin-barcodescanner" source="npm" />
 	<plugin name="cordova-plugin-powermanagement" source="npm" />
-	<plugin name="cordova-plugin-file-transfert" source="npm" />
+	<plugin name="cordova-plugin-file-transfer" source="npm" />
 	<!-- 
     <plugin name="cordova-open" spec="https://github.com/disusered/cordova-open#develop" source="git" />  
 	<plugin name="cordova-sms-plugin" source="npm" spec="0.1.10" />
