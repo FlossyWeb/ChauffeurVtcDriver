@@ -1189,7 +1189,7 @@ function help()
 }
 function cgv()
 {
-	//window.plugins.childBrowser.showWebPage('http://chauffeursvtc.com/client/docs/CGV.pdf', { showLocationBar: true });
+	//window.plugins.childBrowser.showWebPage('https://www.chauffeursvtc.com/client/docs/CGV.pdf', { showLocationBar: true });
 	window.open('https://www.chauffeursvtc.com/docs/CGV.pdf','_blank','location=false,enableViewportScale=yes,closebuttoncaption=Fermer');
 }
 function alertDismissed()

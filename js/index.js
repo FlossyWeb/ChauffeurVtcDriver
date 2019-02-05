@@ -228,6 +228,41 @@ function errorOpenPdf(code) {
 	console.log('Undefined error');
   }
 }
+var renameUpload = '';
+var camearaOptions = {
+	quality: 100,
+	destinationType: navigator.camera.DestinationType.FILE_URI,
+	sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+}
+function getImage(rename) {
+	renameUpload = rename;
+	navigator.camera.getPicture(uploadPhoto,onGetPictureError, camearaOptions);
+}
+
+function onGetPictureError(err){ alert(error); }
+
+function uploadPhoto(imageURI) {
+	var options = new FileUploadOptions();
+	options.fileKey = "file";
+	options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+	options.mimeType = "image/jpeg";
+
+	var params = new Object();
+	params.pwd = "letMeUpload@ChauffeursVTC";
+	params.rename = renameUpload;
+	
+	options.params = params;
+	options.chunkedMode = false;
+
+	var ft = new FileTransfer();
+	ft.upload(imageURI, "https://www.chauffeursvtc.com/upload.php",
+	function (result) {
+		console.log(JSON.stringify(result));
+	},
+	function (error) {
+		console.log(JSON.stringify(error));
+	}, options);
+}
 function bankInfo()
 {
 	//window.plugins.childBrowser.showWebPage('https://goo.gl/CbeKmR', { showLocationBar: true });
