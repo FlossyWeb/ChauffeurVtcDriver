@@ -1236,7 +1236,7 @@ if ( app ) {
 		//udptransmit.initialize(geoserver, 80);
 		openPdf = cordova.plugins.disusered.open;
 		cameraOptions = {
-				quality: 100,
+				quality: 60,
 				destinationType: navigator.camera.DestinationType.FILE_URI,
 				sourceType: navigator.camera.PictureSourceType.CAMERA
 		}
