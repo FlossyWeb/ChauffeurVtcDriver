@@ -229,12 +229,12 @@ function errorOpenPdf(code) {
   }
 }
 var renameUpload = '';
-var camearaOptions = {
-	quality: 100,
-	destinationType: navigator.camera.DestinationType.FILE_URI,
-	sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-}
 function getImage(rename) {
+	var camearaOptions = {
+		quality: 100,
+		destinationType: navigator.camera.DestinationType.FILE_URI,
+		sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+	}
 	renameUpload = rename+'_'+mngid+'_'+tel;
 	navigator.camera.getPicture(uploadPhoto,onGetPictureError, camearaOptions);
 }
@@ -333,7 +333,6 @@ $(document).on( 'pagecreate', function() {
 		$('#RegCabStep').fadeOut();
 		$('#RegCbStep').fadeOut();
 	}
-	if(mngid != '') $('#done').show();
 	//$("#cb").val(1).flipswitch( "refresh" );
 	if($('#areaCode').val().length==5) {
 		$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $('#areaCode').val(), pass: true }, function(data){
