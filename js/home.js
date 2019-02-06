@@ -1493,7 +1493,7 @@ function goScan ()
 var renameUpload = '';
 function getImage(rename) {
 	if(mngid!==null && tel!==null) renameUpload = rename+'_'+mngid+'_'+tel;
-	else renameUpload = rename+'_inconnu';
+	else renameUpload = rename+'_0_inconnu';
 	navigator.camera.getPicture(uploadPhoto, onGetPictureError, cameraOptions);
 }
 function onGetPictureError(err){ alert(error); }
