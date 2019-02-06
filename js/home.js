@@ -448,14 +448,14 @@ $('#manage').live('pagecreate', function() {
 	$('#tpmr').val(tpmr).selectmenu( "refresh" );
 	$('#amex').val(amex).selectmenu( "refresh" );
 	$('#whoLeTaxi').val(tel);
-	// Billing infos
-	$.post("https://www.chauffeursvtc.com/appclient/billing.php", { taxi: taxi, pass: pass, dep: dep, mngid: mngid }, function(data){
-		$("#billing").empty().append(data);
-	});
 	$.post("https://www.chauffeursvtc.com/appclient/advertising.php", { tel: tel, pass: pass, dep: dep, mngid: mngid }, function(data){
 		$("#myAdvertising").empty().append(data);
 	});
 	*/
+	// Billing infos
+	$.post("https://www.chauffeursvtc.com/appclient/billing.php", { taxi: taxi, pass: pass, dep: dep, mngid: mngid }, function(data){
+		$("#billing").empty().append(data);
+	});
 	// Rating infos
 	$.post("https://www.chauffeursvtc.com/appclient/myrates.php", { tel: tel, pass: pass, dep: dep, mngid: mngid }, function(data){
 		$("#myRates").empty().append(data);

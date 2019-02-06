@@ -573,13 +573,13 @@ $(document).ready(function(){
 				if (data.subscribed)
 				{
 					$.localStorage.setItem('regStep', '1');
+					$.mobile.silentScroll(0);
 					$('#telcab').val(data.tel);
 					$('#telcb').val(data.tel);
 					$('#depcab').val(data.dep);
 					$('#depcb').val(data.dep);
 					$('#RegNameStep').fadeOut();
 					$('#RegCabStep').fadeIn();
-					$.mobile.silentScroll(0);
 					display = '<p style="color:green;"><b>Merci, vous &ecirc;tes pr&ecirc;t &agrave; passer &agrave; l&rsquo;&eacute;tape suivante.</b></p>';
 					$("div.error span").empty(); // If Step is OK we empty error handler to prevent previous errors to show during next steps.
 				}
@@ -648,11 +648,11 @@ $(document).ready(function(){
 				if (data.subscribed)
 				{
 					$.localStorage.setItem('regStep', '2');
+					$.mobile.silentScroll(0);
 					//$('#telcb').val(data.tel);
 					//$('#depcb').val(data.dep);
 					$('#RegCabStep').fadeOut();
 					$('#RegCbStep').fadeIn();
-					$.mobile.silentScroll(0);
 					display = '<p style="color:green;"><b>Merci, vous &ecirc;tes pr&ecirc;t &agrave; passer &agrave; l&rsquo;&eacute;tape finale.</b></p>';
 					$("div.error span").empty(); // If Step is OK we empty error handler to prevent previous errors to show during next steps.
 				}
@@ -750,8 +750,9 @@ $(document).ready(function(){
 					$.localStorage.setItem('regStep', 'DONE');
 					$.mobile.silentScroll(0);
 					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ', vous avez bien cr&eacute;&eacute; votre compte et vous serez averti de son activation par un futur message.<br><span style="color:#09F;">Afin de finaliser votre inscription, vous recevrez dans quelques instants un message explicatif &agrave; cet adresse : ' + data.email + '</span>, merci.<br></b></p>';
-					$('#reg_collaps').collapsible( "collapse" );
-					$('#log_collaps').collapsible( "expand" );
+					$('#done').show();
+					//$('#reg_collaps').collapsible( "collapse" );
+					//$('#log_collaps').collapsible( "expand" );
 					//openSomeUrl('https://goo.gl/ZxTY8D');
 					/*
 					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ' Voici les informations d&rsquo;identification qui vous permettront d&rsquo;acc&egrave;der &agrave; votre compte :<br><span style="color:#09F;">Identifiant = ' + data.tel + '<br>Mot de passe = ' + data.pwd + '</span><br>Vous les recevrez dans quelques instants &agrave; cet email : <span style="color:#09F;">' + data.email + '</span>, merci.<br></b></p>';
