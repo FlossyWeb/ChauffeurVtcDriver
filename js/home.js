@@ -479,6 +479,7 @@ function errorOpenPdf(code) {
   }
 }
 function dc() {
+	Dispo_Off();
 	$.mobile.loading( "show" );
 	$.localStorage.clear();
 	$.sessionStorage.clear();
