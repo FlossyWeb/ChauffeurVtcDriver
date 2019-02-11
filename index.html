@@ -94,12 +94,15 @@
 						<div class="error"><span></span></div>
 						<form method="POST" action="/" data-transition="slidefade" data-ajax="false" id="RegNameStep">
 							<h3 style="color:#333;">&Agrave; propos de vous : </h3>
+							<!--
 							<select name="civil">
 								<option selected value="Mr">Civilit&eacute;</option>
 								<option value="Mme">Mme</option>
 								<option value="Mlle">Mlle</option>
 								<option value="Mr">Mr</option>
 							</select>
+							-->
+							<input type="text" name="civil" placeholder="Soci&eacute;t&eacute;" maxlength="60" size="20" class="required"><em></em>
 							<input type="text" name="nom" placeholder="Nom" maxlength="60" size="20" class="required"><em></em>
 							<input type="text" name="prenom" placeholder="Pr&eacute;nom" maxlength="60" size="20" class="required"><em></em>
 							<input type="tel" name="station" id="areaCode" placeholder="Code Postal" maxlength="5" size="20" class="required">
@@ -270,7 +273,7 @@
 							<button onClick="getImage('cni-recto')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
 							<button onClick="getImage('cni-verso')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
 							<hr>
-							Carte Pro VTC (recto-verso)
+							Carte Professionnelle VTC (recto-verso)
 							<button onClick="getImage('cprovtc-recto')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
 							<button onClick="getImage('cprovtc-verso')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
 							<hr>
@@ -287,14 +290,14 @@
 							Photo du macaron VTC accol&eacute; sur le pare-brise de votre v&eacute;hicule
 							<button onClick="getImage('macaron')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
 							<hr>
-							Photo du v&eacute;hicule
+							Photo du v&eacute;hicule exploit&eacute;
 							<button onClick="getImage('vehicule')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
 							<hr>
-							Carte grise du v&eacute;hicule (recto-verso)
+							Carte grise du v&eacute;hicule exploit&eacute; (recto-verso)
 							<button onClick="getImage('cgrise-recto')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
 							<button onClick="getImage('cgrise-verso')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
 							<hr>
-							Attestation d&rsquo;assurance du v&eacute;hicule
+							Attestation d&rsquo;assurance du v&eacute;hicule exploit&eacute;
 							<button onClick="getImage('assurance')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
 							<hr>
 							Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux
@@ -342,7 +345,7 @@
 							<button onClick="getImage('cni-recto')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
 							<button onClick="getImage('cni-verso')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
 							<hr>
-							Carte Pro VTC (recto-verso)
+							Carte Professionnelle VTC (recto-verso)
 							<button onClick="getImage('cprovtc-recto')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
 							<button onClick="getImage('cprovtc-verso')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
 							<hr>
@@ -359,14 +362,14 @@
 							Photo du macaron VTC accol&eacute; sur le pare-brise de votre v&eacute;hicule
 							<button onClick="getImage('macaron')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
 							<hr>
-							Photo du v&eacute;hicule
+							Photo du v&eacute;hicule exploit&eacute;
 							<button onClick="getImage('vehicule')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
 							<hr>
-							Carte grise du v&eacute;hicule (recto-verso)
+							Carte grise du v&eacute;hicule exploit&eacute; (recto-verso)
 							<button onClick="getImage('cgrise-recto')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (recto)</button>
 							<button onClick="getImage('cgrise-verso')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer (verso)</button>
 							<hr>
-							Attestation d&rsquo;assurance du v&eacute;hicule
+							Attestation d&rsquo;assurance du v&eacute;hicule exploit&eacute;
 							<button onClick="getImage('assurance')" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
 							<hr>
 							Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux
