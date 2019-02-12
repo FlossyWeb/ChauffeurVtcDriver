@@ -235,9 +235,10 @@ function errorOpenPdf(code) {
   }
 }
 var renameUpload = '';
-function getImage(rename) {
+function getImage(rename, btn) {
 	if(mngid!==null && tel!==null) renameUpload = rename+'_'+mngid+'_'+tel;
 	else renameUpload = rename+'_0_inconnu';
+	$(btn).addClass('ui-btn-a');
 	navigator.camera.getPicture(uploadPhoto, onGetPictureError, cameraOptions);
 }
 function onGetPictureError(err){ alert(error); }
@@ -454,9 +455,13 @@ $(document).on( 'pagecreate', function() {
 	});
 		
 });
-
+function finishUpload() {
+	$("#log_collaps").collapsible( "expand" );
+	if(app) navigator.notification.alert("Votre demande d'inscription au service chauffeursvtc.com a bien été prise en compte. L'instruction de votre dossier est normalement très rapide. Vous recevrez prochainement vos identifiants de connexion par mail. Dans cette attente, l'équipe chauffeursvtc.com vous souhaite une excellente journée.", alertDismissed, 'ChauffeursVTC', 'OK');
+	else alert("Votre demande d'inscription au service chauffeursvtc.com a bien été prise en compte. L'instruction de votre dossier est normalement très rapide. Vous recevrez prochainement vos identifiants de connexion par mail. Dans cette attente, l'équipe chauffeursvtc.com vous souhaite une excellente journée.");
+}
 $(document).ready(function(){
-
+	
 	$.validator.addMethod(
 		"regex",
 		function(value, element, regexp) {
