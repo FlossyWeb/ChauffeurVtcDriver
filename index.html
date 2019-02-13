@@ -197,10 +197,10 @@
 						</form>
 						<form method="POST" action="/" data-transition="slidefade" data-ajax="false" id="RegCbStep">
 							<h3 style="color:#333;">Infos VTC (suite): </h3>
-							<input type="text" id="siret" name="siret" data-clear-btn="true" placeholder="Siret" maxlength="32" size="20" pattern="[0-9]{14}$" class="required" required>
-							<input type="text" id="imat" name="imat" data-clear-btn="true" placeholder="Immatriculation" maxlength="20" size="20" class="required">
-							<input type="text" id="constructor" name="constructor" data-clear-btn="true" placeholder="Constructeur" maxlength="60" size="20" class="required">
-							<input type="text" name="model" id="model" placeholder="Mod&egrave;le" maxlength="60" size="20" class="required">
+							<input type="text" id="siret" name="siret" data-clear-btn="true" placeholder="Siret" maxlength="32" size="20" pattern="[0-9]{14}$" class="required" required><em></em>
+							<input type="text" id="imat" name="imat" data-clear-btn="true" placeholder="Immatriculation" maxlength="20" size="20" class="required"><em></em>
+							<input type="text" id="constructor" name="constructor" data-clear-btn="true" placeholder="Constructeur" maxlength="60" size="20" class="required"><em></em>
+							<input type="text" name="model" id="model" placeholder="Mod&egrave;le" maxlength="60" size="20" class="required"><em></em>
 							<input type="hidden" name="amex" id="amex" value=""/>
 						<!--
 							<select id="amex" name="amex"> 
@@ -218,7 +218,7 @@
 							</select><em></em>
 							<input type="tel" name="cbnum" placeholder="Num&eacute;ros CB (16)" maxlength="16" size="20" class="required"><em></em>
 							<p>Expire fin :</p>
-							<select name="cbexpm" id="cbexpm">
+							<select name="cbexpm" id="cbexpm" class="required"><em></em>
 								<option value="" selected>Mois</option>
 								<option value="01">01- Janvier</option>
 								<option value="02">02- F&eacute;vrier</option>
@@ -233,7 +233,7 @@
 								<option value="11">11- Novembre</option>
 								<option value="12">12- D&eacute;cembre</option>
 							</select><em></em>
-							<select name="cbexpa" id="cbexpa">
+							<select name="cbexpa" id="cbexpa" class="required"><em></em>
 								<option value="" selected>Ann&eacute;e</option>
 								<option value="2016">2016</option>
 								<option value="2017">2017</option>
@@ -261,7 +261,7 @@
 							</fieldset>
 							<input type="hidden" name="tel" id="telcb" value=""/>
 							<input type="hidden" name="dep" id="depcb" value=""/>
-							<input type="submit" name="submit3" id="subCbStep" value="Suivant">
+							<input type="submit" name="submit3" id="subCbStep" value="Continuer">
 							<!-- <a href="#" onClick="openSomeUrl('https://goo.gl/ZxTY8D')" class="ui-btn ui-btn-icon-left ui-icon-plus ui-shadow-icon ui-corner-all">D&eacute;posez vos justificatifs</a> -->
 						</form>
 						</fieldset>    
@@ -303,7 +303,7 @@
 							Attestation RCP : Responsabilit&eacute; Civile Professionnelle pour le transport de personnes à titre on&eacute;reux
 							<button onClick="getImage('rcp', this)" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Envoyer</button>
 							<hr>
-							<button onClick="finishUpload();" class="ui-btn ui-btn-icon-left ui-icon-camera ui-shadow-icon ui-corner-all">Terminer</button>
+							<button onClick="finishUpload();" id="finishUpload" class="ui-btn ui-btn-icon-left ui-icon-check ui-shadow-icon ui-corner-all">Terminer</button>
 						</div>
 					</div>
 					<div data-role="collapsible" data-collapsed="false" id="log_collaps">

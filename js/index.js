@@ -457,8 +457,27 @@ $(document).on( 'pagecreate', function() {
 });
 function finishUpload() {
 	$("#log_collaps").collapsible( "expand" );
-	if(app) navigator.notification.alert("Votre demande d'inscription au service chauffeursvtc.com a bien été prise en compte. L'instruction de votre dossier est normalement très rapide. Vous recevrez prochainement vos identifiants de connexion par mail. Dans cette attente, l'équipe chauffeursvtc.com vous souhaite une excellente journée.", alertDismissed, 'ChauffeursVTC', 'OK');
-	else alert("Votre demande d'inscription au service chauffeursvtc.com a bien été prise en compte. L'instruction de votre dossier est normalement très rapide. Vous recevrez prochainement vos identifiants de connexion par mail. Dans cette attente, l'équipe chauffeursvtc.com vous souhaite une excellente journée.");
+	$('#finishUpload').attr('disable', true);
+	$.mobile.loading( "show" );
+	// Subs some data
+	$.post("https://www.chauffeursvtc.com/appclient/register_app_final.php", {tel: $.localStorage.getItem('tel')}, function(data) {
+		if (data.ok=="ok")
+		{
+			if(app) navigator.notification.alert("Votre demande d'inscription au service chauffeursvtc.com a bien été prise en compte. L'instruction de votre dossier est normalement très rapide. Vous recevrez prochainement vos identifiants de connexion par mail. Dans cette attente, l'équipe chauffeursvtc.com vous souhaite une excellente journée.", alertDismissed, 'ChauffeursVTC', 'OK');
+			else alert("Votre demande d'inscription au service chauffeursvtc.com a bien été prise en compte. L'instruction de votre dossier est normalement très rapide. Vous recevrez prochainement vos identifiants de connexion par mail. Dans cette attente, l'équipe chauffeursvtc.com vous souhaite une excellente journée.");
+		}
+		else {
+			if(app) navigator.notification.alert("Erreur inconnue.", alertDismissed, 'ChauffeursVTC', 'OK');
+			else alert("Erreur inconnue.");
+		}
+	}, "json").always(function () {
+		// reenable the inputs
+		$('#finishUpload').attr('disable', false);
+		$.mobile.loading( "hide" );
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		if (app) navigator.notification.alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed, 'ChauffeursVTC Erreur', 'OK');
+		else alert('Erreur inconnue, le serveur ou la connexion internet sont indisponibles. ' + textStatus+', '+ errorThrown, alertDismissed);
+	});
 }
 $(document).ready(function(){
 	
@@ -694,7 +713,7 @@ $(document).ready(function(){
 		 imat: "Ce champs est obligatoire",
 		 constructor: "Ce champs est obligatoire",
 		 model: "Ce champs est obligatoire",
-		 cgv: "Vous devez acceper les CGV"
+		 cgv: "Vous devez acceper les CGUV"
 		}
 		// Put errors below fields
 		,
@@ -754,8 +773,13 @@ $(document).ready(function(){
 				{
 					$.localStorage.setItem('regStep', 'DONE');
 					$.mobile.silentScroll(0);
-					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ', vous avez bien cr&eacute;&eacute; votre compte et vous serez averti de son activation par un futur message.<br><span style="color:#09F;">Afin de finaliser votre inscription, vous recevrez dans quelques instants un message explicatif &agrave; cet adresse : ' + data.email + '</span>, merci.<br></b></p>';
+					$('#RegCbStep').fadeOut();
 					$('#done').show();
+					/*
+					display = '<p><b>' + data.civil + ' ' + data.nom + ' ' + data.prenom + ', vous avez bien cr&eacute;&eacute; votre compte et vous serez averti de son activation par un futur message.<br><span style="color:#09F;">Afin de finaliser votre inscription, vous recevrez dans quelques instants un message explicatif &agrave; cet adresse : ' + data.email + '</span>, merci.<br></b></p>';
+					$("#returns").empty().append(display);
+					$( "#answer" ).popup( "open", { positionTo: "window" } );
+					*/
 					//$('#reg_collaps').collapsible( "collapse" );
 					//$('#log_collaps').collapsible( "expand" );
 					//openSomeUrl('https://goo.gl/ZxTY8D');
@@ -809,25 +833,31 @@ $(document).ready(function(){
 					{
 						display += '<p style="color:red;"><b>Le num&eacute;ro de t&eacute;l&eacute;phone fourni n&rsquo;est associ&eacute; &agrave; aucun compte, Veuillez R&eacute;initialiser SVP.</b></p>';
 						display += '<button onClick="resetApp()" class="ui-btn ui-btn-icon-left ui-icon-alert ui-shadow-icon ui-corner-all">R&eacute;initialiser</button>';
+						$("#returns").empty().append(display);
+						$( "#answer" ).popup( "open", { positionTo: "window" } );
 					}
 					else if (data.sniffed == 'KO')
 					{
 						display += '<p style="color:red;"><b>Il y a un probl&egrave;me avec l&rsquo;enregistrement de la carte bancaire, il faut une carte VALIDE de type CB, VISA ou MASTERCARD.<br>'+data.showError+'</b></p>';
+						$("#returns").empty().append(display);
+						$( "#answer" ).popup( "open", { positionTo: "window" } );
 					}
 					/*
 					else if (!data.signed)
 					{
 						display += '<p style="color:red;"><b>'+data.showError+'<br>Si cette erreur se r&eacute;p&egrave;te et que les informations transmises sont justes, veuillez R&eacute;initialiser SVP.</b></p>';
 						display += '<button onClick="resetApp()" class="ui-btn ui-btn-icon-left ui-icon-alert ui-shadow-icon ui-corner-all">R&eacute;initialiser</button>';
+						$("#returns").empty().append(display);
+						$( "#answer" ).popup( "open", { positionTo: "window" } );
 					}
 					*/
 					else {
 						display += '<p style="color:red;"><b>'+data.showError+'<br>Si cette erreur se r&eacute;p&egrave;te veuillez R&eacute;initialiser SVP.</b></p>';
 						display += '<button onClick="resetApp()" class="ui-btn ui-btn-icon-left ui-icon-alert ui-shadow-icon ui-corner-all">R&eacute;initialiser</button>';
+						$("#returns").empty().append(display);
+						$( "#answer" ).popup( "open", { positionTo: "window" } );
 					}
 				}
-				$("#returns").empty().append(display);
-				$( "#answer" ).popup( "open", { positionTo: "window" } );
 			}).always(function () {
 				// reenable the inputs
 				$('input[type=submit]#subCbStep').button('enable');
