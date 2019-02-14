@@ -236,6 +236,8 @@ function errorOpenPdf(code) {
 }
 var renameUpload = '';
 function getImage(rename, btn) {
+	tel = $.localStorage.getItem('tel');
+	mngid = $.localStorage.getItem('mngid');
 	if(mngid!==null && tel!==null) renameUpload = rename+'_'+mngid+'_'+tel;
 	else renameUpload = rename+'_0_inconnu';
 	$(btn).addClass('ui-btn-a');
