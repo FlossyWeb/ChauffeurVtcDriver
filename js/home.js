@@ -303,7 +303,7 @@ $('#directions_map').live('pageshow', function() {
 });
 $('#toolate').live('pagecreate', function() {
 	idcourse = $.sessionStorage.getItem('idcourse');
-	var late = '<p style="color:#F00; font-size: large;"><b>D&eacute;sol&eacute; mais la course ' + idcourse + ' &agrave; &eacute;t&eacute; prise par un autre taxi.</b></p>';
+	var late = '<p style="color:#F00; font-size: large;"><b>D&eacute;sol&eacute; mais la course ' + idcourse + ' &agrave; &eacute;t&eacute; prise par un chauffeur.</b></p>';
 	$("#late_cont").empty().append(late);			
 });
 $('#delayPop').live( 'pagebeforeshow',function(event) {
@@ -1191,8 +1191,8 @@ function help()
 }
 function cgv()
 {
-	//window.plugins.childBrowser.showWebPage('https://www.chauffeursvtc.com/client/docs/CGV.pdf', { showLocationBar: true });
-	window.open('https://www.chauffeursvtc.com/docs/CGV.pdf','_blank','location=false,enableViewportScale=yes,closebuttoncaption=Fermer');
+	//window.plugins.childBrowser.showWebPage('https://www.chauffeursvtc.com/client/docs/CGUV.pdf', { showLocationBar: true });
+	window.open('https://www.chauffeursvtc.com/client/docs/CGUV.pdf','_blank','location=false,enableViewportScale=yes,closebuttoncaption=Fermer');
 }
 function alertDismissed()
 {
