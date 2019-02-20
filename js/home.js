@@ -368,7 +368,8 @@ $('#manage').live('pagecreate', function() {
 	var dec_prenom = $('#prenom').html(prenom).text();
 	//var dec_station = $('#station').html(station).text();
 	$('#login').val(tel);
-	$('#civil').val(civil).selectmenu( "refresh" );
+	//$('#civil').val(civil).selectmenu( "refresh" );
+	$('#civil').val(civil);
 	$('#nom').val(dec_nom);
 	$('#prenom').val(dec_prenom);
 	$('#taxi').val(taxi);
@@ -377,7 +378,6 @@ $('#manage').live('pagecreate', function() {
 	$('#confirmail').val(email);
 	$('#cpro').val(cpro);
 	$('#station').val(station);
-	$('#city').val(city).selectmenu( "refresh" );
 	$('#siret').val(siret);
 	$('#imat').val(imat);
 	$('#constructor').val(constructor);
@@ -385,7 +385,7 @@ $('#manage').live('pagecreate', function() {
 	$('#log').val(tel);
 	if(type!=null) $('#type').val(type).selectmenu( "refresh" );
 	if(cb!=null) $('#cb').val(cb).flipswitch( "refresh" );
-	if(amex!=null) $('#amex').val(amex).flipswitch( "refresh" );
+	//if(amex!=null) $('#amex').val(amex).flipswitch( "refresh" );
 	//if(medic!=null) $('#medic').val(medic).flipswitch( "refresh" );
 	if(animal!=null) $('#animal').val(animal).flipswitch( "refresh" );
 	if(passengers!=null) $('#passengers').val(passengers).slider("refresh");;
@@ -421,7 +421,7 @@ $('#manage').live('pagecreate', function() {
 	if($('#station').val().length==5) {
 		$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $('#station').val(), pass: true }, function(data){
 			$("#cityBox").empty().append(data).trigger('create');
-			//$("#cityBox").trigger('create');
+			$('#city').val(city).selectmenu( "refresh" );
 			//$('#insee').val(insee).selectmenu( "refresh" );
 		});
 	}
@@ -429,7 +429,6 @@ $('#manage').live('pagecreate', function() {
 		if($(this).val().length==5) {
 			$.post("https://www.chauffeursvtc.com/appserver/open_get_insee.php", { zip: $(this).val(), pass: true }, function(data){
 				$("#cityBox").empty().append(data).trigger('create');
-				//$("#cityBox").trigger('create');
 				//$('#insee').val(insee).selectmenu( "refresh" );
 			});
 		}
@@ -1902,6 +1901,7 @@ $(document).ready(function(){
 				$.localStorage.setItem('taxi', data.taxi);
 				$.localStorage.setItem('tel', data.tel);
 				$.localStorage.setItem('cpro', data.cpro);
+				$.localStorage.setItem('siret', data.siret);
 				$.localStorage.setItem('email', data.email);
 				$.localStorage.setItem('station', data.station);
 				$.localStorage.setItem('city', data.city);
@@ -1922,12 +1922,13 @@ $(document).ready(function(){
 			}, "json").done(function(data) { 
 				setTimeout('reloadVars()', 2000); // Wait a little bit to reloadVars as it's all async...
 				$('#login').val(data.tel);
-				$('#civil').val(data.civil).selectmenu( "refresh" );
+				$('#civil').val(data.civil);
 				$('#nom').val(data.nom);
 				$('#prenom').val(data.prenom);
-				$('#taxi').val(data.taxi);
+				//$('#taxi').val(data.taxi);
 				$('#tel').val(data.tel);
 				$('#cpro').val(data.cpro);
+				$('#siret').val(data.siret);
 				$('#email').val(data.email);
 				$('#confirmail').val(data.email);
 				$('#station').val(data.station);
@@ -1935,9 +1936,13 @@ $(document).ready(function(){
 				$('#type').val(data.type).selectmenu( "refresh" );
 				$('#cb').val(data.cb).flipswitch( "refresh" );
 				//$('#medic').val(data.medic).flipswitch( "refresh" );
+				//$('#amex').val(data.amex).flipswitch( "amex" );
 				$('#animal').val(data.animal).flipswitch( "refresh" );
 				$('#passengers').val(data.passengers).slider("refresh");;
-				$('#color').val(data.color);
+				$('#color').val(data.color).selectmenu( "refresh" );
+				$('#imat').val(data.imat);
+				$('#constructor').val(data.constructor);
+				$('#model').val(data.model);
 				var langTab= data.lang.split(", ");
 				for (i = 0; i < langTab.length; i++) {
 					switch(langTab[i]) {
@@ -1968,8 +1973,8 @@ $(document).ready(function(){
 				var alertMe = '';
 				if (data.modmy)
 				{
-					display = '<p><b>la modification de vos informations personnelles &agrave; bien &eacute;t&eacute; prise en compte, merci.</b></p>';
-					alertMe = 'la modification de vos informations personnelles à bien été prise en compte, merci.';
+					display = '<p><b>la modification de vos informations personnelles &agrave; bien &eacute;t&eacute; prise en compte, merci. Le cas &eacute;ch&eacute;ant vous devrez d&eacute;poser de nouveaux justificatifs</b></p>';
+					alertMe = 'la modification de vos informations personnelles à bien été prise en compte, merci. Le cas échéant vous devrez déposer de nouveaux justificatifs';
 				}
 				else {
 					display = '<p style="color:red;"><b>la modification de vos informations personnelles n&rsquo;&agrave; pas &eacute;t&eacute; prise en compte, aucune modification faite en base de donn&eacute;e.</b></p>';
