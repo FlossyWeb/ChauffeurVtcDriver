@@ -718,6 +718,26 @@ function refreshCmd() {
 		}
 	}).always(function() { $.mobile.loading( "hide" ); });
 }
+function refreshCmdBackground() {
+	$("#screen_bookings").empty();
+	$.post("https://www.chauffeursvtc.com/appserver/get_app_bookings.php", { taxi: taxi, tel: tel, email: email, dispo: dispo, pass: pass, dep: dep, mngid: mngid, group: group, zip: station }, function(data){
+		if (data != 0)
+		{
+			$("#screen_bookings").append(data);
+			$("#screen_bookings").trigger('create');
+			$('.orders').addClass('badge');
+			$('.ordersjob').addClass('badge');
+			$('.orders').empty().append(data);
+			$('.ordersjob').empty().append(data);
+		}
+		else {
+			$('.orders').removeClass('badge');
+			$('.ordersjob').removeClass('badge');
+			$('.orders').empty();
+			$('.ordersjob').empty();
+		}
+	});
+}
 function dispoCheck()
 {
 	$.post("https://www.chauffeursvtc.com/appclient/open_dispo_app.php?check=1", { taxi: taxi, tel: tel, pass: pass, dep: dep, taxi_id: taxi_id, opendata: openDataGo}, function(data){ 
