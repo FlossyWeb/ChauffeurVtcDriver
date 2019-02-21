@@ -1005,7 +1005,10 @@ function diaryCall(query_string)
 				 
 				 break;
 		}					
-	}, "json").always(function() { Sound_On();});
+	}, "json").always(function() { 
+		Sound_On();
+		refreshCmd();
+	});
 	cordova.plugins.notification.local.clear(2, function() {
 		// Cleaning cmd notification
 	});
