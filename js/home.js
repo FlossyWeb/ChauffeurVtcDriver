@@ -705,6 +705,16 @@ function refreshCmd() {
 		{
 			$("#screen_bookings").append(data);
 			$("#screen_bookings").trigger('create');
+			$('.orders').addClass('badge');
+			$('.ordersjob').addClass('badge');
+			$('.orders').empty().append(data);
+			$('.ordersjob').empty().append(data);
+		}
+		else {
+			$('.orders').removeClass('badge');
+			$('.ordersjob').removeClass('badge');
+			$('.orders').empty();
+			$('.ordersjob').empty();
 		}
 	}).always(function() { $.mobile.loading( "hide" ); });
 }
