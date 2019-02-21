@@ -662,18 +662,18 @@ function update()
 }
 function checkCmd() {
 	$.post("https://www.chauffeursvtc.com/appserver/get_app_bookings.php", { taxi: taxi, tel: tel, email: email, dispo: dispo, pass: pass, dep: dep, mngid: mngid, group: group, zip: station, ring: pass }, function(data){
-		if (data != 0)
+		if (data.badge != 0)
 		{
 			$('.orders').addClass('badge');
 			$('.ordersjob').addClass('badge');
-			$('.orders').empty().append(data);
-			$('.ordersjob').empty().append(data);
+			$('.orders').empty().append(data.badge);
+			$('.ordersjob').empty().append(data.badge);
 			navigator.notification.beep(2);
 			navigator.notification.vibrate(1000);
-			//badgeNumber2=data;
+			//badgeNumber2=data.badge;
 			badgeNumber2=1;
 			badgeNumber = badgeNumber1+badgeNumber2;
-			if(parseInt(data)>1) { var showing=data+" courses en commande sont disponibles !";}
+			if(parseInt(data.badge)>1) { var showing=data.badge+" courses en commande sont disponibles !";}
 			else { var showing="Une course en commande est disponible !";}
 			cordova.plugins.notification.local.schedule({
 				id: 2,
@@ -681,7 +681,7 @@ function checkCmd() {
 				text: showing,
 				led: "E7B242",
 				badge: badgeNumber,
-				data: { number:data }
+				data: { number:data.badge }
 			});
 		}
 		else {
@@ -693,7 +693,7 @@ function checkCmd() {
 			$('.orders').empty();
 			$('.ordersjob').empty();
 		}
-	}).always(function(data) {
+	}, "json").always(function(data) {
 		setTimeout('checkCmd()', 300000);
 	});
 }
@@ -701,14 +701,14 @@ function refreshCmd() {
 	$.mobile.loading( "show" );
 	$("#screen_bookings").empty();
 	$.post("https://www.chauffeursvtc.com/appserver/get_app_bookings.php", { taxi: taxi, tel: tel, email: email, dispo: dispo, pass: pass, dep: dep, mngid: mngid, group: group, zip: station }, function(data){
-		if (data != 0)
+		if (data.badge != 0)
 		{
-			$("#screen_bookings").append(data);
+			$("#screen_bookings").append(data.snippet);
 			$("#screen_bookings").trigger('create');
 			$('.orders').addClass('badge');
 			$('.ordersjob').addClass('badge');
-			$('.orders').empty().append(data);
-			$('.ordersjob').empty().append(data);
+			$('.orders').empty().append(data.badge);
+			$('.ordersjob').empty().append(data.badge);
 		}
 		else {
 			$('.orders').removeClass('badge');
@@ -716,19 +716,19 @@ function refreshCmd() {
 			$('.orders').empty();
 			$('.ordersjob').empty();
 		}
-	}).always(function() { $.mobile.loading( "hide" ); });
+	}, "json").always(function() { $.mobile.loading( "hide" ); });
 }
 function refreshCmdBackground() {
 	$("#screen_bookings").empty();
 	$.post("https://www.chauffeursvtc.com/appserver/get_app_bookings.php", { taxi: taxi, tel: tel, email: email, dispo: dispo, pass: pass, dep: dep, mngid: mngid, group: group, zip: station }, function(data){
-		if (data != 0)
+		if (data.badge != 0)
 		{
-			$("#screen_bookings").append(data);
+			$("#screen_bookings").append(data.snippet);
 			$("#screen_bookings").trigger('create');
 			$('.orders').addClass('badge');
 			$('.ordersjob').addClass('badge');
-			$('.orders').empty().append(data);
-			$('.ordersjob').empty().append(data);
+			$('.orders').empty().append(data.badge);
+			$('.ordersjob').empty().append(data.badge);
 		}
 		else {
 			$('.orders').removeClass('badge');
@@ -736,7 +736,7 @@ function refreshCmdBackground() {
 			$('.orders').empty();
 			$('.ordersjob').empty();
 		}
-	});
+	}, "json");
 }
 function dispoCheck()
 {
@@ -1012,7 +1012,7 @@ function diaryCall(query_string)
 				};
 				var error = function (e) {
 				};
-				sms.send(number, message, intent, success, error);
+				//sms.send(number, message, intent, success, error);
 				
 				 break;
 			 case '#toolate':
@@ -1119,7 +1119,7 @@ function callIncident(irdv, ihail, iop, icell, istatus)
 				if(app) navigator.notification.alert("L'incident a été déclaré toutefois, votre appareil semble ne pas gérer les sms, veuillez contacter le client pour l'avertir SVP.", alertDismissed, 'ChauffeursVTC', 'OK');
 				else alert("L'incident a été déclaré toutefois, votre appareil semble ne pas gérer les sms, veuillez contacter le client pour l'avertir SVP.");
 			};
-			sms.send(number, message, options, success, error);
+			//sms.send(number, message, options, success, error);
 			//$.mobile.pageContainer.pagecontainer("change", "#home", { transition: "slide"} );
 			//return false;
 		}
@@ -1612,7 +1612,7 @@ function Share()
 		$('#smsReturn').empty().append('Probl&egrave;me lors de l&rsquo;envoi du message: ' + e);
 		$( "#popSms" ).popup( "open", { positionTo: "window" } );
 	};
-	sms.send(number, message, intent, success, error);
+	//sms.send(number, message, intent, success, error);
 }
 function ShareArt()
 {
@@ -1629,7 +1629,7 @@ function ShareArt()
 		$('#smsReturn').empty().append('Probl&egrave;me lors de l&rsquo;envoi du message: ' + e);
 		$( "#popSms" ).popup( "open", { positionTo: "window" } );
 	};
-	sms.send(number, message, intent, success, error);
+	//sms.send(number, message, intent, success, error);
 }
 function SharePro()
 {
@@ -1646,7 +1646,7 @@ function SharePro()
 		$('#smsReturn').empty().append('Probl&egrave;me lors de l&rsquo;envoi du message: ' + e);
 		$( "#popSms" ).popup( "open", { positionTo: "window" } );
 	};
-	sms.send(number, message, intent, success, error);
+	//sms.send(number, message, intent, success, error);
 }
 function goToSection(jumpPage, jumpSection)
 {
@@ -1672,7 +1672,7 @@ function contactShare()
 				$('#smsReturn').empty().append('Probl&egrave;me lors de l&rsquo;envoi du message: ' + e);
 				$( "#popSms" ).popup( "open", { positionTo: "window" } );
 			};
-			sms.send(number, message, intent, success, error);
+			//sms.send(number, message, intent, success, error);
 		},500);
 	};
 	var failedCallbackPick = function(result){
