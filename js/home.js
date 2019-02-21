@@ -334,10 +334,10 @@ $( '#cmd' ).live( 'pagebeforeshow',function(event){
 	$.post("https://www.chauffeursvtc.com/appserver/get_app_bookings.php", { taxi: taxi, tel: tel, email: email, dispo: dispo, pass: pass, dep: dep, mngid: mngid, group: group, zip: station }, function(data){
 		if (data != 0)
 		{
-			$("#screen_bookings").empty().append(data);
+			$("#screen_bookings").empty().append(data.snippet);
 			$("#screen_bookings").trigger('create');
 		}
-	}).always(function() { $.mobile.loading( "hide" ); });
+	}, "json").always(function() { $.mobile.loading( "hide" ); });
 });
 $( '#history' ).live( 'pagebeforeshow',function(event){
 	$.mobile.loading( "show" );
@@ -670,6 +670,8 @@ function checkCmd() {
 			$('.ordersjob').empty().append(data.badge);
 			navigator.notification.beep(2);
 			navigator.notification.vibrate(1000);
+			$("#screen_bookings").empty().append(data.snippet);
+			$("#screen_bookings").trigger('create');
 			//badgeNumber2=data.badge;
 			badgeNumber2=1;
 			badgeNumber = badgeNumber1+badgeNumber2;
