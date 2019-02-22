@@ -330,14 +330,7 @@ $( '#planning' ).live( 'pagebeforeshow',function(event){
 	}).always(function() { $.mobile.loading( "hide" ); });
 });
 $( '#cmd' ).live( 'pagebeforeshow',function(event){
-	$.mobile.loading( "show" );
-	$.post("https://www.chauffeursvtc.com/appserver/get_app_bookings.php", { taxi: taxi, tel: tel, email: email, dispo: dispo, pass: pass, dep: dep, mngid: mngid, group: group, zip: station }, function(data){
-		if (data != 0)
-		{
-			$("#screen_bookings").empty().append(data.snippet);
-			$("#screen_bookings").trigger('create');
-		}
-	}, "json").always(function() { $.mobile.loading( "hide" ); });
+	refreshCmd();
 });
 $( '#history' ).live( 'pagebeforeshow',function(event){
 	$.mobile.loading( "show" );
@@ -696,7 +689,7 @@ function checkCmd() {
 			$('.ordersjob').empty();
 		}
 	}, "json").always(function(data) {
-		setTimeout('checkCmd()', 300000);
+		setTimeout('checkCmd()', 900000);
 	});
 }
 function refreshCmd() {
