@@ -601,7 +601,7 @@ function update()
 				setTimeout( function () {
 					if ($.sessionStorage.getItem('sound') != 'OFF') {
 						playAudio('sounds/ring.mp3');
-						navigator.notification.vibrate(9000);
+						navigator.vibrate(3000);
 					}
 				}, 100);
 				//pollingTime = 2000;  // Time to play the sound
@@ -662,7 +662,7 @@ function checkCmd() {
 			$('.orders').empty().append(data.badge);
 			$('.ordersjob').empty().append(data.badge);
 			navigator.notification.beep(2);
-			navigator.notification.vibrate(1000);
+			navigator.vibrate(1000);
 			$("#screen_bookings").empty().append(data.snippet);
 			$("#screen_bookings").trigger('create');
 			//badgeNumber2=data.badge;
@@ -688,7 +688,7 @@ function checkCmd() {
 			$('.orders').empty();
 			$('.ordersjob').empty();
 		}
-	}, "json").always(function(data) {
+	}, "json").always(function() {
 		setTimeout('checkCmd()', 90000);
 	});
 }
