@@ -689,7 +689,7 @@ function checkCmd() {
 			$('.ordersjob').empty();
 		}
 	}, "json").always(function(data) {
-		setTimeout('checkCmd()', 900000);
+		setTimeout('checkCmd()', 90000);
 	});
 }
 function refreshCmd() {
