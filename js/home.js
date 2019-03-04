@@ -1849,6 +1849,7 @@ $(document).ready(function(){
 		   required: true,
 		   phone: true
 		 },
+		 civil: "required",
 		 nom: "required",
 		 prenom: "required",
 		 cpro: "required",
@@ -1882,6 +1883,7 @@ $(document).ready(function(){
 		 login: {
 		   required: "Ce champs est obligatoire"
 		 },
+		 civil: "Ce champs est obligatoire",
 		 nom: "Ce champs est obligatoire",
 		 prenom: "Ce champs est obligatoire",
 		 cpro: "Le N&deg; de Carte Professionelle est obligatoire",

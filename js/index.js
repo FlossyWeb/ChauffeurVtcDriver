@@ -510,6 +510,7 @@ $(document).ready(function(){
 
 	$("#RegNameStep").validate({
 		rules: {
+		 civil: "required",
 		 nom: "required",
 		 prenom: "required",
 		 city: "required",
@@ -533,6 +534,7 @@ $(document).ready(function(){
 		 }
 		},
 		messages: {
+		 civil: "La oci&eacute;t&eacute; est obligatoire",
 		 nom: "Le Nom est obligatoire",
 		 prenom: "Le Pr&eacute;nom est obligatoire",
 		 city: "La ville est obligatoire",
