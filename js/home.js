@@ -833,20 +833,22 @@ function addCalendar(date, rdv, com, idcourse, cell)
 	// create
 	window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate,success,error);
 }
-function histoMap(rdv, dest, idcourse, com, cell)
+function histoMap(rdv, dest, idcourse, com, cell, prix)
 {
 	$.sessionStorage.setItem('rdv', rdv);
 	$.sessionStorage.setItem('dest', dest);
+	$.sessionStorage.setItem('prix', prix);
 	$.sessionStorage.setItem('idcourse', idcourse);
 	$.sessionStorage.setItem('com', com);
 	$.sessionStorage.setItem('cell', cell);
 	$.sessionStorage.setItem('cmd', 0);
 	$.mobile.pageContainer.pagecontainer("change", "#directions_map", { transition: "slide"} );
 }
-function planMap(rdv, dest, idcourse, com, cell)
+function planMap(rdv, dest, idcourse, com, cell, prix)
 {
 	$.sessionStorage.setItem('rdv', rdv);
 	$.sessionStorage.setItem('dest', dest);
+	$.sessionStorage.setItem('prix', prix);
 	$.sessionStorage.setItem('idcourse', idcourse);
 	$.sessionStorage.setItem('com', com);
 	$.sessionStorage.setItem('cell', cell);
