@@ -9,7 +9,7 @@
         FRANCOIS-REGIS SIMON
     </author>
 
-	<name>ChauffeursVTC (chauffeurs)</name>
+	<name>ChauffeursVTC</name>
 
 	<description>
 	   Realisez votre activite de VTC simplement via votre mobile avec ChauffeurVTC.
@@ -71,9 +71,9 @@
 	<plugin name="cordova-plugin-mauron85-background-geolocation" source="npm">
 		<variable name="ALWAYS_USAGE_DESCRIPTION" value="CELA PERMETTRA AUX USAGERS DE CONNAITRE VOTRE POSITION." />
 	</plugin>
-	<plugin name="cordova-plugin-better-background-mode" source="npm" />
-	<!-- 
 	<plugin name="cordova-plugin-background-task" source="npm" />
+	<!-- 
+	<plugin name="cordova-plugin-better-background-mode" source="npm" />
 	<plugin name="cordova-plugin-background-mode" source="npm" spec="0.7.2" />
 	<plugin name="nl.x-services.plugins.launchmyapp">
 	-->

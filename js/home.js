@@ -1271,8 +1271,8 @@ if ( app ) {
 				sourceType: navigator.camera.PictureSourceType.CAMERA
 		}
 		// For iOS => backgroundtask
-		//backgroundtask.start(bgFunctionToRun);
-		
+		backgroundtask.start(bgFunctionToRun);
+		/*
 		// For Android And Apple Enterprise apps => Enable background mode
 		cordova.plugins.backgroundMode.enable();
 		cordova.plugins.backgroundMode.setDefaults({
@@ -1280,6 +1280,7 @@ if ( app ) {
 			ticker: 'App toujours en fonction, nous vous informons des courses en cours...',
 			text:   'Nous vous informons des courses en cours...'
 		});
+		*/
 		// Called when background mode has been activated or deactivated
 		cordova.plugins.backgroundMode.onactivate = function () {
 			//Sound_Off();
